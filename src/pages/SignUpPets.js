@@ -62,21 +62,31 @@ export default function  SignUpPets () {
           value={values['name']}
           onChange={onChange}
          />
-
          <input
-          placeholder='Name'
+          placeholder='Especie'
           name='especie'
           value={values['especie']}
           onChange={onChange}
          />
-
+       <input
+          placeholder='Castrado'
+          name='castrdo'
+          value={values['castrdo']}
+          onChange={onChange}
+         />
          <input
-          placeholder='Name'
+          placeholder='Raça'
           name='raca'
           value={values['raca']}
           onChange={onChange}
          />
 
+         <input
+          name='data'
+          value={values['data']}
+          onChange={onChange}
+          type='date'
+         />
          <button type="submit">
           Enviar
         </button>
