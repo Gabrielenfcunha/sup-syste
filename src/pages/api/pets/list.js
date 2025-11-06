@@ -13,12 +13,11 @@ export default async function handler(req, res) {
     if (!userId || supaError) {
       res.status(403).json({ error: supaError, data: null });
     }
-
-    submitedData.dono = userId;
-
-    delete submitedData.token;
     
-    const {data, error} = await supabase.from('pets').upsert(submitedData);
+    const {data, error} = await supabase
+      .from('pets')
+      .select('*')
+      .eq('dono', userId);
 
     res.status(200).json({ data, error });
   } else {

@@ -1,9 +1,13 @@
+import { useRouter } from 'next/navigation';
 import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
+import PetForm from '@/components/pet-form';
 
 export default function  SignUpPets () {
 
+    const router = useRouter();
+  
   // const [petsName,setPetsNome] = useState({
   //   name:'',password:''
   // });
@@ -47,6 +51,7 @@ export default function  SignUpPets () {
       }
 
       alert('deu certo' + data);
+      router.push('/ListPets');
     } catch (error) {
       console.error(error);
     }
@@ -56,36 +61,9 @@ export default function  SignUpPets () {
     <div>
       <h1>Novo  Pet</h1>
       <form onSubmit={handleSubmit}>
-        <input
-          placeholder='Name'
-          name='name'
-          value={values['name']}
-          onChange={onChange}
-         />
-         <input
-          placeholder='Especie'
-          name='especie'
-          value={values['especie']}
-          onChange={onChange}
-         />
-       <input
-          placeholder='Castrado'
-          name='castrdo'
-          value={values['castrdo']}
-          onChange={onChange}
-         />
-         <input
-          placeholder='Raça'
-          name='raca'
-          value={values['raca']}
-          onChange={onChange}
-         />
-
-         <input
-          name='data'
-          value={values['data']}
-          onChange={onChange}
-          type='date'
+         <PetForm
+           values={values}
+           onChange={onChange}
          />
          <button type="submit">
           Enviar

@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { supabaseServer as supabase } from "@/util/supabase";
 
-export default async function handler(req, res) {
+export default async function handlerDelete(req, res) {
    if (req.method === 'POST') {
     const submitedData = req.body; // Automatically parsed JSON
 
@@ -14,11 +14,12 @@ export default async function handler(req, res) {
       res.status(403).json({ error: supaError, data: null });
     }
 
-    submitedData.dono = userId;
-
-    delete submitedData.token;
     
-    const {data, error} = await supabase.from('pets').upsert(submitedData);
+    const {data, error} = await supabase
+      .from('pets')
+      .delete()
+      .eq('dono', userId)
+      .eq('id', submitedData.id);
 
     res.status(200).json({ data, error });
   } else {

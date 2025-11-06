@@ -18,6 +18,8 @@ export default function Homepage ({token}) {
       <h3> Pets do {token.user.user_metadata.full_name}</h3>
       <h4>Meus  Pets</h4>
       <button><Link href ='/SignUpPets'>+</Link></button>
+       <button><Link href ='/ListPets'>lista</Link></button>
+
       <button onClick={handleLogout}>sair</button>
     </div>
   );
