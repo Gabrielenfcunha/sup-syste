@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { supabaseServer as supabase } from "@/util/supabase";
 
 export default async function handler(req, res) {
@@ -13,12 +12,21 @@ export default async function handler(req, res) {
     if (!userId || supaError) {
       res.status(403).json({ error: supaError, data: null });
     }
-
-    submitedData.dono = userId;
-
-    delete submitedData.token;
     
-    const {data, error} = await supabase.from('pets').upsert(submitedData);
+    const {data, error} = await supabase
+      .from('vacina')
+      .select(`
+        id,
+        vacina,
+        marca,
+        veterinario,
+        fabricacao,
+        vencimento,
+        dose,
+        pet(id, name, dono)
+      `)
+      .eq('pet.dono', userId)
+      // .eq('pet.id', petId);
 
     res.status(200).json({ data, error });
   } else {
@@ -26,4 +34,4 @@ export default async function handler(req, res) {
   }
 
   res.status(200).json({ error: 123, data: null });
-}
+};

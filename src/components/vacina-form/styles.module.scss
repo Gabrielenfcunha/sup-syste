@@ -1,0 +1,21 @@
+
+@use '@/styles/variables.scss' as v;
+
+.vacina-form {
+  background-color: v.$form-background;
+  color: v.$form-font-color;
+
+  .pets-list {
+    background-color: blue;
+
+    &:hover {
+      background-color: green;
+    }
+
+    option {
+      text-align: right;
+    }
+  }
+}
+
+

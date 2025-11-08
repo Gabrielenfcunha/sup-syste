@@ -15,10 +15,13 @@ export default function Homepage ({token}) {
 
   return(
     <div>
-      <h3> Pets do {token.user.user_metadata.full_name}</h3>
+      <h3> Pets do {token.user?.user_metadata?.full_name}</h3>
       <h4>Meus  Pets</h4>
       <button><Link href ='/SignUpPets'>+</Link></button>
        <button><Link href ='/ListPets'>lista</Link></button>
+       <button><Link href ='/ListVacina'>lista vacina </Link></button>
+        <button><Link href ='/SignUpVacina'>criar  vacina </Link></button>
+
 
       <button onClick={handleLogout}>sair</button>
     </div>

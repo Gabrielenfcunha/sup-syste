@@ -1,0 +1,30 @@
+
+.loader {
+  border-radius: 50%;
+  border-right: solid 3px black;
+  width: 50px;
+  height: 50px;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin: auto;
+  translate: -50%;
+
+  display: none;
+
+  animation: spin 1s linear infinite;
+
+  &[data-active="true"] {
+    display: block;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
