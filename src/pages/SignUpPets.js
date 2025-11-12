@@ -3,6 +3,8 @@ import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
 import PetForm from '@/components/pet-form';
+import Link from "next/link";
+
 
 export default function  SignUpPets () {
 
@@ -69,7 +71,8 @@ export default function  SignUpPets () {
           Enviar
         </button>
       </form>
-     
+           <button><Link href ='/Homepage'>Voltar</Link></button>
+
         {/* <button><Link href='/auth/SignUP'>Inscreva - se</Link></button> */}
       </div>
   )

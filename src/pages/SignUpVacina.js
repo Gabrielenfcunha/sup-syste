@@ -3,6 +3,8 @@ import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
 import VacinaForm from '@/components/vacina-form';
+import Link from "next/link";
+
 
 export default function  SignUPvacina() {
 
@@ -56,7 +58,7 @@ export default function  SignUPvacina() {
           Enviar
         </button>
       </form>
-     
+      <button><Link href ='/Homepage'>Voltar</Link></button>
       </div>
   )
 }

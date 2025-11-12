@@ -1,6 +1,7 @@
 import { supabaseClient as supabase } from "@/util/supabase";
 import React, { useState } from 'react';
 import Link from "next/link";
+import css from "./style/signUp.module.scss"
 
 export default function SignUP  () {
   
@@ -44,34 +45,36 @@ export default function SignUP  () {
   };
 
   return (
-    <div>
-      <h1>Criar conta</h1>
-      <form onSubmit={handleSubmit}>
-        <input 
-          placeholder='Name'
-          name='fullName'
-          onChange={handleChange}
-        />
-        <input
-          placeholder='Email'
-          name='email'
-          onChange={handleChange} autoComplete='username'
-         />
-        <input 
-          placeholder='Password'
-          name='password'
-          type="password"
-          onChange={handleChange} autoComplete='current-password'
-        />
+    <div className={css["loginContainer"]}>
+      <div className={css["formSection"]}>
+        <h1>Criar conta</h1>
+        <form onSubmit={handleSubmit} className={css["form"]}>
+          <input 
+            placeholder='Name'
+            name='fullName'
+            onChange={handleChange}
+          />
+          <input
+            placeholder='Email'
+            name='email'
+            onChange={handleChange} autoComplete='username'
+          />
+          <input 
+            placeholder='Password'
+            name='password'
+            type="password"
+            onChange={handleChange} autoComplete='current-password'
+          />
 
-         <button type="submit">
-          Enviar
-        </button>
-      </form>
-      <div>
+          <button type="submit">
+            Enviar
+          </button>
+        </form>
+      </div>
+      <div className={css["sideSection"]}>
         <h2>Bem-vindo ao Sup</h2>
         <p>Acesse sua conta para gerenciar os cuidados</p>
-        <button><Link href = '/auth/Login'>Login</Link></button>
+        <Link href = '/auth/Login' className={css["signupBtn"]}>Login</Link>
       </div>
     </div>
   )

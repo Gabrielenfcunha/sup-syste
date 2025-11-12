@@ -2,6 +2,8 @@ import { useRouter } from 'next/navigation';
 import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
+import Link from "next/link";
+
 
 export default function  ListPets () {
 
@@ -76,6 +78,8 @@ export default function  ListPets () {
            
         </tbody>
       </table>
+      <button><Link href ='/Homepage'>Voltar</Link></button>
+
     </div>
   )
 };

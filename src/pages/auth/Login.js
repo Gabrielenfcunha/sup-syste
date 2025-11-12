@@ -2,6 +2,7 @@ import { useRouter } from 'next/navigation';
 import { supabaseClient as supabase } from "@/util/supabase";
 import React, { useState  } from 'react';
 import Link from "next/link";
+import css from "./style/login.module.scss"
 
 
 
@@ -43,31 +44,33 @@ export default function  Login ({setToken}) {
   };
 
   return (
-    <div>
-      <h1>Entrar</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          placeholder='Email'
-          name='email'
-          onChange={handleChange} autoComplete='username'
-         />
-        <input 
-          placeholder='Password'
-          name='password'
-          type="password"
-          onChange={handleChange} autoComplete='current-password'
-        />
-
-         <button type="submit">
-          Enviar
-        </button>
-      </form>
-      <div>
+    <div className={css["loginContainer"]}>
+      <div className={css["formSection"]}>
+        <h1>Entrar</h1>
+        <form onSubmit={handleSubmit} className={css["form"]}>
+          <input
+            placeholder='Email'
+            name='email'
+            onChange={handleChange} autoComplete='username'
+          />
+          <input 
+            placeholder='Password'
+            name='password'
+            type="password"
+            onChange={handleChange} autoComplete='current-password'
+          />
+        
+          <button type="submit">
+            Enviar
+          </button>
+        </form>
+      </div>
+      <div className={css["sideSection"]}>
         <h2>Olá, amigo</h2>
-        <p>Seu pet merece esse cuidado VIP!
-
-Cadastre-se no SUP e deixe a saúde dele em boas patas!</p>
-        <button><Link href='/auth/SignUP'>Inscreva - se</Link></button>
+        <p>Seu pet merece esse cuidado VIP! 
+          Cadastre-se no SUP e deixe a saúde dele em boas patas!</p>
+        <Link href='/auth/SignUp' className={css["signupBtn"]}>Inscreva - se</Link>
+        
       </div>
     </div>
   )

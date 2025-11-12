@@ -3,6 +3,9 @@ import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
 import { Loader } from '@/components/loader';
+import Link from "next/link";
+import css from"../styles/listVacina.module.scss"
+
 
 export default function  ListVacina () {
 
@@ -28,22 +31,26 @@ export default function  ListVacina () {
   }, []);
 
   return (
-    <div>
+    <div className={css["list-vacina"]}>
       <Loader active={!values.length} />
       <table>
         <thead>
           <tr>
-            <th>Nome</th>
-            <th>Especie</th>
-            <th>Raça</th>
-            <th>Castrdo</th>
-            <th>Data</th>
-            <th>---</th>
+            <th>Nome do pet</th>
+            <th>Vacina</th>
+            <th>Marca</th>
+            <th>veterinario</th>
+            <th>dose</th>
+            <th>fabricaçao</th>
+            <th>vencimento</th>
+            <th>edit</th>
+            <th>delete</th>
           </tr>
         </thead>
         <tbody>
           {values.map((value)=>
             <tr>
+              <th>{value.pet.name}</th>
               <th>{value.vacina}</th>
               <th>{value.marca}</th>
               <th>{value.veterinario}</th>
@@ -52,14 +59,14 @@ export default function  ListVacina () {
               <th>{value.vencimento}</th>
 
               <th>
-                <button
+                <button className={css["btn-edit"]}
                   onClick={_ => {
                     router.push(`/edit-vacina/${value.id}`);
                   }}
                 >Edit</button>
               </th>
                 <th>
-                <button
+                <button className={css["btn-delete"]}
                   onClick={async _ => {
                     if (!window.confirm('tem certeza?')) {return;}
                     const {data, error} = await postJson(
@@ -80,6 +87,8 @@ export default function  ListVacina () {
            
         </tbody>
       </table>
+      <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+
     </div>
   )
 };
