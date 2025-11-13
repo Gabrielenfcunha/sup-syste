@@ -4,6 +4,7 @@ import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
 import PetForm from '@/components/pet-form';
 import Link from "next/link";
+import css from "../styles/signup.module.scss"
 
 
 export default function  SignUpPets () {
@@ -60,20 +61,18 @@ export default function  SignUpPets () {
   }
 
   return (
-    <div>
-      <h1>Novo  Pet</h1>
-      <form onSubmit={handleSubmit}>
+    <div className={css["signup-container"]}>
+      <h1 className={css["title"]}>Novo  Pet</h1>
+      <form onSubmit={handleSubmit}  className={css["form"]}>
          <PetForm
            values={values}
            onChange={onChange}
          />
-         <button type="submit">
+         <button type="submit" className={css["btn-submit"]}>
           Enviar
         </button>
       </form>
-           <button><Link href ='/Homepage'>Voltar</Link></button>
-
-        {/* <button><Link href='/auth/SignUP'>Inscreva - se</Link></button> */}
-      </div>
+        <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+  </div>
   )
 }

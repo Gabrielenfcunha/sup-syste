@@ -66,10 +66,9 @@ export default function BlogPostPage(props) {
           <div>
              <PetList
                 values={values}
-                onChange={onChange}
+                
               />
-
-              <button type="submit" onClick={handleSubmit}>
+          <button type="submit" onClick={handleSubmit}>
           Enviar
         </button>
           </div>

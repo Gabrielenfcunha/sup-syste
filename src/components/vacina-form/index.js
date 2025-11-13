@@ -27,10 +27,11 @@ export default function vacinaForm(props) {
     }, []);
 
   return <div className={css["vacina-form"]}>
-    <div>
+    <h2 className={css["title"]}>
       Titulo do formulario
-    </div>
+    </h2>
     <Loader active={!userPets.length} />
+    <div  className={css["form-group"]}>
     <select
       name="pet"
       className={css['pets-list']}
@@ -90,6 +91,6 @@ export default function vacinaForm(props) {
           onChange={onChange}
           type='date'
          />
-
+      </div>
   </div>
 }

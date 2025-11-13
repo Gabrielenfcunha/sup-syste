@@ -4,7 +4,7 @@ import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
 import { Loader } from '@/components/loader';
 import Link from "next/link";
-import css from"../styles/listVacina.module.scss"
+import css from "../styles/listVacina.module.scss"
 
 
 export default function  ListVacina () {

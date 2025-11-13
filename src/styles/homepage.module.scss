@@ -12,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding: 0 8rem;
     border-bottom: 1px solid #90c2e5;
 
     .logo {
@@ -84,14 +84,11 @@
 
     .name {
       font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .email {
-      font-size: 0.85rem;
-      color: #e2e2e2;
+      font-size: 10px;
       margin-bottom: 2rem;
     }
+
+  
 
     .menu {
       display: flex;

@@ -1,7 +1,7 @@
 
 export default function PetList(props) {
 
-  const { values, onChange } = props;
+  const { values } = props;
 
   return <div>
         <div>

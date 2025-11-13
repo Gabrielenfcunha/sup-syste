@@ -2,6 +2,7 @@ import React, { useState  } from 'react';
 import { postJson } from '@/util/http';
 import { useRouter } from 'next/navigation';
 import css from"../styles/homepage.module.scss"; 
+import { Loader } from '@/components/loader';
 import { supabaseClient as supabase } from "@/util/supabase";
 import Link from "next/link";
 
@@ -97,27 +98,20 @@ function calcularIdade(dataNascimento) {
         {/* ==== MAIN ==== */}
         <main className={css['main']}>
           <h2>Meus Pets</h2>
-
+      <Loader active={!values.length} />
           <div className={css['pets']}>
   {values.length > 0 ? (
     values.map((pet) => (
       <div key={pet.id} className={css['petCard']}>
-        <div className={css['petImage']}>
-          {/* Se tiver imagem no banco */}
-          {pet.image_url ? (
-            <img src={pet.image_url} alt={pet.name} />
-          ) : (
-            <span className={css['noImage']}>🐾</span>
-          )}
-        </div>
+
 
         <div className={css['petInfo']}>
           <h3>{pet.name}</h3>
           <p><strong>Espécie:</strong> {pet.especie || 'Não informado'}</p>
           <p><strong>Idade:</strong> {calcularIdade(pet.data)}</p>
-          {/* <Link href={`/pets/${pet.id}`} className={css['detailsBtn']}> */}
+          <Link href="#" className={css['detailsBtn']}> 
             Ver detalhes
-          {/* </Link> */}
+          </Link>
         </div>
       </div>
     ))
@@ -126,7 +120,7 @@ function calcularIdade(dataNascimento) {
   )}
 
   <Link href="/SignUpPets" className={css['addCard']}>
-    <span>+</span>
+    <span>➕</span>
   </Link>
 </div>
 
@@ -135,17 +129,7 @@ function calcularIdade(dataNascimento) {
         </main>
       </div>
     </div>
-    // <div className={css["homepage"]} >
-    //   <h3> Bem vindo {token.user?.user_metadata?.full_name}</h3>
-    //   <h4>Meus  Pets</h4>
-    //   <div className={css["button-group"]}>
-    //       <Link href ='/SignUpPets'className={css["btn"]}>+</Link>
-    //       <Link href ='/ListPets' className={css["btn"]}>lista</Link>
-    //       <Link href ='/ListVacina' className={css["btn"]}>lista vacina </Link>
-    //       <Link href ='/SignUpVacina' className={css["btn"]}>criar  vacina </Link>
-    //   </div>
-    //   <button className={css["logout"]} onClick={handleLogout}>sair</button>
-    // </div>
+    
   );
   
 }

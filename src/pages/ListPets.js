@@ -2,8 +2,9 @@ import { useRouter } from 'next/navigation';
 import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
+import { Loader } from '@/components/loader';
 import Link from "next/link";
-
+import css from "../styles/listPet.module.scss";
 
 export default function  ListPets () {
 
@@ -29,7 +30,8 @@ export default function  ListPets () {
   }, []);
 
   return (
-    <div>
+    <div className={css["list-vacina"]}>
+      <Loader active={!values.length} />
       <table>
         <thead>
           <tr>
@@ -37,8 +39,9 @@ export default function  ListPets () {
             <th>Especie</th>
             <th>Raça</th>
             <th>Castrdo</th>
-            <th>Data</th>
-            <th>---</th>
+            <th>Data Nascimento</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -50,14 +53,14 @@ export default function  ListPets () {
               <th>{value.castrdo}</th>
               <th>{value.data}</th>
               <th>
-                <button
+                <button className={css["btn-edit"]}
                   onClick={_ => {
                     router.push(`/edit-pet/${value.id}`);
                   }}
                 >Edit</button>
               </th>
-                            <th>
-                <button
+              <th>
+                <button className={css["btn-delete"]}
                   onClick={async _ => {
                     if (!window.confirm('tem certeza?')) {return;}
                     const {data, error} = await postJson(
@@ -78,7 +81,7 @@ export default function  ListPets () {
            
         </tbody>
       </table>
-      <button><Link href ='/Homepage'>Voltar</Link></button>
+     <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
 
     </div>
   )

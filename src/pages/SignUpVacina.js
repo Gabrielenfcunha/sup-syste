@@ -4,6 +4,7 @@ import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
 import VacinaForm from '@/components/vacina-form';
 import Link from "next/link";
+import css from "../styles/signup.module.scss"
 
 
 export default function  SignUPvacina() {
@@ -40,25 +41,25 @@ export default function  SignUPvacina() {
       }
 
       alert('deu certo' + data);
-       router.push('/LisVacina');
+       router.push('/ListVacina');
     } catch (error) {
       console.error(error);
     }
   }
 
   return (
-    <div>
-      <h1>vacina</h1>
-      <form onSubmit={handleSubmit}>
+    <div className={css["signup-container"]}>
+      <h1 className={css["title"]}>vacina</h1>
+      <form onSubmit={handleSubmit} className={css["form"]}>
          <VacinaForm
            values={values}
            onChange={onChange}
          />
-         <button type="submit">
+         <button type="submit" className={css["btn-submit"]}>
           Enviar
         </button>
       </form>
-      <button><Link href ='/Homepage'>Voltar</Link></button>
+      <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
       </div>
   )
 }
