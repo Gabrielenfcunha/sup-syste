@@ -1,3 +1,4 @@
+
 import { useRouter } from 'next/navigation';
 import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
@@ -92,6 +93,3 @@ export default function  ListVacina () {
     </div>
   )
 };
-
-
-

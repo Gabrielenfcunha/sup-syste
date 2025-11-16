@@ -15,7 +15,8 @@ export default async function handler(req, res) {
     }
 
     delete submitedData.token;
-    
+       // submitedData.id= parseInt(submitedData.id)
+    submitedData.pet = parseInt(submitedData.pet.id)
     const {data, error} = await supabase
       .from('vacina')
       .upsert(submitedData);

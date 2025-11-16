@@ -1,7 +1,6 @@
 import React from 'react';
 import Link from "next/link";
 import css from "../styles/homeIndex.module.scss";
-import Image from '../../public/img/pets.png';
  
 
 
@@ -26,8 +25,7 @@ export default function Index (params) {
           <Link href='/auth/SignUp'className={css["btn"]}>Sign Up</Link>
         </div>
        <div className={css["image"]}>
-        <h3>🐾</h3>
-          <img src={Image} alt="pets cão e gato" />
+          <img src="/img/pets.png" alt="pets cão e gato" />
         </div>
       </section>
     </div>

@@ -3,6 +3,7 @@ import PetForm from "@/components/pet-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
+import css from "../../styles/signup.module.scss"
 
 export default function BlogPostPage(props) {
   const router = useRouter();
@@ -61,27 +62,22 @@ export default function BlogPostPage(props) {
 
   return (
     <div>
-      {
-        petId && values && (
-          <div>
-             <PetForm
-                values={values}
-                onChange={onChange}
-              />
+      <div className={css["signup-container"]}>
+        <PetForm
+          loading={!(petId && values)}
+          values={values}
+          onChange={onChange}
+        />
 
-              <button type="submit" onClick={handleSubmit}>
+        <button 
+          className={css["btn-submit"]}
+          type="submit"
+          onClick={handleSubmit}
+          disabled={!(petId && values)}
+        >
           Enviar
         </button>
-          </div>
-        )
-      }
-      {
-        !(petId && values) && (
-          <div>
-            carregando...
-          </div>
-        )
-      }
+      </div>
     </div>
   );
 }

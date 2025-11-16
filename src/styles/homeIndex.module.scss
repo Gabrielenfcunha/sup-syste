@@ -60,7 +60,7 @@
 
     h2 {
       color: #558;
-      font-size: 2.2rem;
+      font-size: 1.9rem;
       margin-bottom: 1rem;
     }
 
@@ -86,15 +86,13 @@
   }
 
   .image {
-    flex: 1;
+    flex: 2;
     display: flex;
     justify-content: center;
+    width: 80%;
+    max-width: 500px;
 
-    h3 {
-      font-size: 10rem;
-      width: 80%;
-      max-width: 500px;
-    }
+
   }
 }
 

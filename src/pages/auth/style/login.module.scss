@@ -53,9 +53,9 @@
       cursor: pointer;
       transition: background 0.3s;
 
-      &:hover {
-        background-color: darken(#00d9ff, 10%);
-      }
+      // &:hover {
+      //   background-color: darken(#00d9ff, 10%);
+      // }
     }
   }
 }
@@ -94,10 +94,7 @@
     width: fit-content;
     transition: all 0.3s ease;
 
-    &:hover {
-      background: darken(white, 5%);
-      color: darken(#120267, 10%);
-    }
+
   }
 
   @media (max-width: 850px) {

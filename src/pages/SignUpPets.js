@@ -67,6 +67,9 @@ export default function  SignUpPets () {
          <PetForm
            values={values}
            onChange={onChange}
+      
+
+
          />
          <button type="submit" className={css["btn-submit"]}>
           Enviar

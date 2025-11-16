@@ -1,3 +1,4 @@
+
 import css from "./styles.module.scss"
 export default function PetForm(props) {
 
@@ -10,31 +11,31 @@ export default function PetForm(props) {
         <input
             placeholder='Name'
             name='name'
-            value={values['name']}
+            value={values?.['name']}
             onChange={onChange}
           />
         <input
             placeholder='Especie'
             name='especie'
-            value={values['especie']}
+            value={values?.['especie']}
             onChange={onChange}
           />
         <input
             placeholder='Castrado'
             name='castrdo'
-            value={values['castrdo']}
+            value={values?.['castrdo']}
             onChange={onChange}
           />
         <input
             placeholder='Raça'
             name='raca'
-            value={values['raca']}
+            value={values?.['raca']}
             onChange={onChange}
           />
 
         <input
             name='data'
-            value={values['data']}
+            value={values?.['data']}
             onChange={onChange}
             type='date'
           />
