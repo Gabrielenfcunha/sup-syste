@@ -6,7 +6,6 @@ export default async function handler(req, res) {
     const submitedData = req.body; // Automatically parsed JSON
 
     const token = submitedData.token;
-    const id = submitedData.id;
     const { data: { user }, error:supaError } = await supabase.auth.getUser(token);
 
     const userId = user?.id;
@@ -14,24 +13,14 @@ export default async function handler(req, res) {
     if (!userId || supaError) {
       res.status(403).json({ error: supaError, data: null });
     }
-    
-    const {data, error} = await supabase
-      .from('pets')
-      .select(`
-        id,
-        name,
-        data,
-        especie,
-        raca,
-        castrdo,
-        dono,
-        sexo
-      `)
-      .eq('dono', userId)
-      .eq('id', id)
-      .limit(1);
 
-    res.status(200).json({ data: data[0], error });
+    delete submitedData.token;
+    submitedData.pet_vermifugo = parseInt(submitedData.pet_vermifugo.id  || submitedData.pet_vermifugo)
+    const {data, error} = await supabase
+      .from('vermifugoo')
+      .upsert(submitedData);
+
+    res.status(200).json({ data, error });
   } else {
     res.status(405).json({ error: 'Method Not Allowed' });
   }

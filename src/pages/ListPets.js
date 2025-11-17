@@ -40,6 +40,7 @@ export default function  ListPets () {
             <th>Raça</th>
             <th>Castrdo</th>
             <th>Data Nascimento</th>
+            <th>sexo</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
@@ -52,6 +53,7 @@ export default function  ListPets () {
               <th>{value.raca}</th>
               <th>{value.castrdo}</th>
               <th>{value.data}</th>
+              <th>{value.sexo}</th>
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {

@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { supabaseServer as supabase } from "@/util/supabase";
 
 export default async function handler(req, res) {
@@ -6,7 +5,6 @@ export default async function handler(req, res) {
     const submitedData = req.body; // Automatically parsed JSON
 
     const token = submitedData.token;
-    const id = submitedData.id;
     const { data: { user }, error:supaError } = await supabase.auth.getUser(token);
 
     const userId = user?.id;
@@ -16,25 +14,21 @@ export default async function handler(req, res) {
     }
     
     const {data, error} = await supabase
-      .from('pets')
+      .from('vermifugoo')
       .select(`
         id,
-        name,
-        data,
-        especie,
-        raca,
-        castrdo,
-        dono,
-        sexo
+        vermifugo,
+        data_vermifugo,
+        tipo_vermifugo,
+        pet_vermifugo(id, name, dono)
       `)
-      .eq('dono', userId)
-      .eq('id', id)
-      .limit(1);
+      .eq('pet_vermifugo.dono', userId)
+      // .eq('pet.id', petId);
 
-    res.status(200).json({ data: data[0], error });
+    res.status(200).json({ data, error });
   } else {
     res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   res.status(200).json({ error: 123, data: null });
-}
+};

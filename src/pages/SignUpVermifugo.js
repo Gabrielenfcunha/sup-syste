@@ -2,11 +2,12 @@ import { useRouter } from 'next/navigation';
 import React, { useState  } from 'react';
 import { supabaseClient as supabase } from "@/util/supabase";
 import { postJson } from '@/util/http';
-import VacinaForm from '@/components/vacina-form';
-import css from "../styles/signup.module.scss"
+import VermifugoForm from '@/components/vermifugo-form';
 import Link from "next/link";
+import css from "../styles/signup.module.scss"
 
-export default function  SignUPvacina() {
+
+export default function  SignUpVermifugo() {
 
     const router = useRouter();
 
@@ -29,7 +30,7 @@ export default function  SignUPvacina() {
     try {
 
       const { data, error } = await postJson(
-        '/api/vacina/upsert',
+        '/api/vermifugo/upsert',
         values
       );
       
@@ -40,7 +41,7 @@ export default function  SignUPvacina() {
       }
 
       alert('deu certo' + data);
-       router.push('/ListVacina');
+       router.push('/ListVermifugo');
     } catch (error) {
       console.error(error);
     }
@@ -50,16 +51,15 @@ export default function  SignUPvacina() {
     <div className={css["signup-container"]}>
       <h1 className={css["title"]}>vacina</h1>
       <form onSubmit={handleSubmit} className={css["form"]}>
-         <VacinaForm
+         <VermifugoForm
            values={values}
            onChange={onChange}
          />
-         <button type="submit"  className={css["btn-submit"]}>
+         <button type="submit" className={css["btn-submit"]}>
           Enviar
         </button>
-        
       </form>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
-    </div>
+      </div>
   )
 }

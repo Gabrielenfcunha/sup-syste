@@ -91,6 +91,10 @@ function calcularIdade(dataNascimento) {
             <Link href='/ListPets' >Lista Pets</Link>
             <Link href='/ListVacina' >Lista Vacina</Link>
             <Link href='/SignUpVacina' >Criar Vacina</Link>
+            <Link href='/ListVermifugo'>Lista Vermifugo</Link>
+            <Link href='/SignUpVermifugo'>criar Vermifugo</Link>
+            <Link href='/ListMedicacao'>Lista Medicaçao</Link>
+            <Link href='/ListExames'>Lista Exames</Link>
             <button className={css['logout']} onClick={handleLogout}>Sair</button>
           </nav>
         </aside>
@@ -98,7 +102,6 @@ function calcularIdade(dataNascimento) {
         {/* ==== MAIN ==== */}
         <main className={css['main']}>
           <h2>Meus Pets</h2>
-      <Loader active={!values.length} />
           <div className={css['pets']}>
   {values.length > 0 ? (
     values.map((pet) => (
@@ -109,7 +112,7 @@ function calcularIdade(dataNascimento) {
           <h3>{pet.name}</h3>
           <p><strong>Espécie:</strong> {pet.especie || 'Não informado'}</p>
           <p><strong>Idade:</strong> {calcularIdade(pet.data)}</p>
-          <Link href="#" className={css['detailsBtn']}> 
+          <Link href={`edit-pet/${pet.id}`} className={css['detailsBtn']}> 
             Ver detalhes
           </Link>
         </div>

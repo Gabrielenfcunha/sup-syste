@@ -26,71 +26,73 @@ export default function vacinaForm(props) {
       fetchPets();
     }, []);
 
-  return <div className={css["vacina-form"]}>
-    <h2 className={css["title"]}>
-      Titulo do formulario
-    </h2>
-    <Loader active={!userPets.length} />
-    <div  className={css["form-group"]}>
-    <select
-      name="pet"
-      className={css['pets-list']}
-      value={values?.['pet']?.id}
-      onChange={onChange}>
-      <option></option>
-      {
-        userPets.map(pet => {
-          return (
-            <option
-              value={pet.id}
-            >
-              {pet.name}
-            </option>
-          );
-        })
-      }
-    </select>
-        <input
-          placeholder='Vacina'
-          name='vacina'
-          value={values?.['vacina']}
-          onChange={onChange}
-         />
-         <input
-          placeholder='marca'
-          name='marca'
-          value={values?.['marca']}
-          onChange={onChange}
-         />
-       <input
-          placeholder='veterinario'
-          name='veterinario'
-          value={values?.['veterinario']}
-          onChange={onChange}
-         />
-        <input
-         placeholder="dose"
-          name='dose'
-          value={values?.['dose']}
-          onChange={onChange}
-          
-         />
+  return( 
+    <div className={css["vacina-form"]}>
+      <h2 className={css["title"]}>
+        Titulo do formulario
+      </h2>
+      <Loader active={!userPets.length} />
+      <div  className={css["form-group"]}>
+        <select
+          name="pet"
+          className={css['pets-list']}
+          value={values?.['pet']?.id}
+          onChange={onChange}>
+          <option></option>
+          {
+            userPets.map(pet => {
+              return (
+                <option
+                  value={pet.id}
+                >
+                  {pet.name}
+                </option>
+              );
+            })
+          }
+        </select>
+            <input
+              placeholder='Vacina'
+              name='vacina'
+              value={values?.['vacina']}
+              onChange={onChange}
+            />
+            <input
+              placeholder='marca'
+              name='marca'
+              value={values?.['marca']}
+              onChange={onChange}
+            />
+          <input
+              placeholder='veterinario'
+              name='veterinario'
+              value={values?.['veterinario']}
+              onChange={onChange}
+            />
+            <input
+            placeholder="dose"
+              name='dose'
+              value={values?.['dose']}
+              onChange={onChange}
+              
+            />
 
-         <input
-          placeholder='fabricacao'
-          name='fabricacao'
-          value={values?.['fabricacao']}
-          onChange={onChange}
-          type="date"
-         />
+            <input
+              placeholder='fabricacao'
+              name='fabricacao'
+              value={values?.['fabricacao']}
+              onChange={onChange}
+              type="date"
+            />
 
-         <input
-         placeholder="vencimento"
-          name='vencimento'
-          value={values?.['vencimento']}
-          onChange={onChange}
-          type='date'
-         />
+            <input
+            placeholder="vencimento"
+              name='vencimento'
+              value={values?.['vencimento']}
+              onChange={onChange}
+              type='date'
+            />
       </div>
-  </div>
+    </div>
+  )
 }

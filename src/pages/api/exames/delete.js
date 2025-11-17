@@ -1,7 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import { supabaseServer as supabase } from "@/util/supabase";
+import { postJson } from '@/util/http';
 
-export default async function handler(req, res) {
+export default async function handlerDelete(req, res) {
    if (req.method === 'POST') {
     const submitedData = req.body; // Automatically parsed JSON
 
@@ -14,11 +15,15 @@ export default async function handler(req, res) {
       res.status(403).json({ error: supaError, data: null });
     }
 
-    delete submitedData.token;
-    submitedData.pet = parseInt(submitedData.pet.id || submitedData.pet)
+    if (!(await belongsToUser(submitedData.id, userId))) {
+      return res.status(405).json({ error: 'Not Allowed' });
+    }
+    
     const {data, error} = await supabase
-      .from('vacina')
-      .upsert(submitedData);
+    .from('exames')
+    .delete()
+    .eq('id', submitedData.id)  // ou o campo que identifica a vacina
+    ; 
 
     res.status(200).json({ data, error });
   } else {
@@ -26,4 +31,23 @@ export default async function handler(req, res) {
   }
 
   res.status(200).json({ error: 123, data: null });
+}
+
+async function belongsToUser (vacId, userId) {
+  const {data, error} = await supabase
+    .from('exames')
+    .select('id, pet(dono)')
+    .eq('id', vacId)
+    .eq('pet.dono', userId);
+
+  if (error) {
+    console.error(error);
+    return false;
+  }
+
+  if (data.length) {
+    return true;
+  }
+
+  return false;
 }

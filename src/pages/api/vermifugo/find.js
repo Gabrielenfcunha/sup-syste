@@ -16,18 +16,15 @@ export default async function handler(req, res) {
     }
     
     const {data, error} = await supabase
-      .from('pets')
+      .from('vermifugoo')
       .select(`
         id,
-        name,
-        data,
-        especie,
-        raca,
-        castrdo,
-        dono,
-        sexo
+        vermifugo,
+        data_vermifugo,
+        tipo_vermifugo,
+        pet_vermifugo(id, name, dono)
       `)
-      .eq('dono', userId)
+      .eq('pet_vermifugo.dono', userId)
       .eq('id', id)
       .limit(1);
 

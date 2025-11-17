@@ -1,17 +1,18 @@
 
-import VacinaForm from "@/components/vacina-form";
+import VermifugoForm from "@/components/vermifugo-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
+import css from "../../styles/signup.module.scss"
 
 export default function BlogPostPage(props) {
   const router = useRouter();
 
-  const vacinaId = router.query.vacinaId;
+  const vermifugoId = router.query.vermifugoId;
   const [values, setValues] = React.useState(null);
 
-  async function fetchVacina() {
-    const { data, error } = await postJson("/api/vacina/find", {id: vacinaId});
+  async function fetchVermigo() {
+    const { data, error } = await postJson("/api/vermifugo/find", {id: vermifugoId});
 
     if (error) {
       alert("erro");
@@ -21,8 +22,8 @@ export default function BlogPostPage(props) {
   }
 
   React.useEffect((_) => {
-    if (vacinaId) fetchVacina();
-  }, [vacinaId]);
+    if (vermifugoId) fetchVermigo();
+  }, [vermifugoId]);
 
   function onChange (event) {
     const { name, value } = event.target;
@@ -39,10 +40,10 @@ export default function BlogPostPage(props) {
       try {
   
         const { data, error } = await postJson(
-          '/api/vacina/upsert',
+          '/api/vernifugo/upsert',
           {
             ...values,
-            id: vacinaId
+            id: vermifugoId
           }
         );
         
@@ -53,7 +54,7 @@ export default function BlogPostPage(props) {
         }
   
         alert('deu certo' + data);
-        router.push('/ListVacina');
+        router.push('/ListVermifugo');
       } catch (error) {
         console.error(error);
       }
@@ -61,20 +62,22 @@ export default function BlogPostPage(props) {
 
   return (
     <div>
-      <div>
-        <VacinaForm
-          loading={!(vacinaId && values)}
+      <div  className={css["signup-container"]}>
+        <VermifugoForm
+          loading={!(vermifugoId && values)}
           values={values}
           onChange={onChange}
         />
-
-        <button
+       
+        <button  
+          className={css["btn-submit"]}
           type="submit"
           onClick={handleSubmit}
-          disabled={!(vacinaId && values)}
+          disabled={!(vermifugoId && values)}
         >
           Enviar
         </button>
+      
       </div>
     </div>
   );

@@ -8,14 +8,14 @@ import Link from "next/link";
 import css from "../styles/listVacina.module.scss"
 
 
-export default function  ListVacina() {
+export default function  ListMedicacao() {
 
   const router = useRouter();
   const [values, setValues] = React.useState([]);
 
-  async function fetchvacina() {
+  async function fetchmedicacao() {
     const {data, error} = await postJson(
-      '/api/vacina/list',
+      '/api/medicacao/list',
       {}
     );
 
@@ -28,7 +28,7 @@ export default function  ListVacina() {
 
     
   React.useEffect(_ => {
-    fetchvacina();
+    fetchmedicacao();
   }, []);
 
   return (
@@ -38,12 +38,12 @@ export default function  ListVacina() {
         <thead>
           <tr>
             <th>Nome do pet</th>
-            <th>Vacina</th>
-            <th>Marca</th>
-            <th>veterinario</th>
-            <th>dose</th>
-            <th>fabricaçao</th>
-            <th>vencimento</th>
+            <th>medicacao</th>
+            <th>Quantidade</th>
+            <th>apresencao</th>
+            <th>via_admi</th>
+            <th>especial</th>
+            <th>tipo_med</th>
             <th>edit</th>
             <th>delete</th>
           </tr>
@@ -52,13 +52,12 @@ export default function  ListVacina() {
           {values.map((value)=>
             <tr>
               <th>{value.pet.name}</th>
-              <th>{value.vacina}</th>
-              <th>{value.marca}</th>
-              <th>{value.veterinario}</th>
-              <th>{value.dose}</th>
-              <th>{value.fabricacao}</th>
-              <th>{value.vencimento}</th>
-
+              <th>{value.medicamento}</th>
+              <th>{value.quantidade}</th>
+              <th>{value.apresencao}</th>
+              <th>{value.via_admi}</th>
+              <th>{value.especial}</th>
+              <th>{value.tipo_med}</th>
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {
@@ -71,14 +70,14 @@ export default function  ListVacina() {
                   onClick={async _ => {
                     if (!window.confirm('tem certeza?')) {return;}
                     const {data, error} = await postJson(
-                        '/api/vacina/delete',
+                        '/api/medicacao/delete',
                         {id:value.id}
                       );             
                       
                       if (error) {
                         //
                       } else {
-                        fetchvacina();
+                        fetchmedicacao();
                       }
                   }}
                 >Deletar</button>

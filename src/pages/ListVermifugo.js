@@ -8,14 +8,14 @@ import Link from "next/link";
 import css from "../styles/listVacina.module.scss"
 
 
-export default function  ListVacina() {
+export default function  ListVermifugo() {
 
   const router = useRouter();
   const [values, setValues] = React.useState([]);
 
-  async function fetchvacina() {
+  async function fetchvermifugo() {
     const {data, error} = await postJson(
-      '/api/vacina/list',
+      '/api/vermifugo/list',
       {}
     );
 
@@ -28,7 +28,7 @@ export default function  ListVacina() {
 
     
   React.useEffect(_ => {
-    fetchvacina();
+    fetchvermifugo();
   }, []);
 
   return (
@@ -38,12 +38,10 @@ export default function  ListVacina() {
         <thead>
           <tr>
             <th>Nome do pet</th>
-            <th>Vacina</th>
-            <th>Marca</th>
+            <th>vermifugo</th>
+            <th>tipo vermifugo</th>
             <th>veterinario</th>
-            <th>dose</th>
-            <th>fabricaçao</th>
-            <th>vencimento</th>
+            <th>data vermifugo</th>
             <th>edit</th>
             <th>delete</th>
           </tr>
@@ -51,13 +49,10 @@ export default function  ListVacina() {
         <tbody>
           {values.map((value)=>
             <tr>
-              <th>{value.pet.name}</th>
-              <th>{value.vacina}</th>
-              <th>{value.marca}</th>
-              <th>{value.veterinario}</th>
-              <th>{value.dose}</th>
-              <th>{value.fabricacao}</th>
-              <th>{value.vencimento}</th>
+              <th>{value.pet_vermifugo?.name}</th>
+              <th>{value.vermifugo}</th>
+              <th>{value.tipo_vermifugo}</th>
+              <th>{value.data_vermifugo}</th>
 
               <th>
                 <button className={css["btn-edit"]}
@@ -71,14 +66,14 @@ export default function  ListVacina() {
                   onClick={async _ => {
                     if (!window.confirm('tem certeza?')) {return;}
                     const {data, error} = await postJson(
-                        '/api/vacina/delete',
+                        '/api/vermifugo/delete',
                         {id:value.id}
                       );             
                       
                       if (error) {
                         //
                       } else {
-                        fetchvacina();
+                        fetchvermifugo();
                       }
                   }}
                 >Deletar</button>
