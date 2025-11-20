@@ -33,7 +33,7 @@ export default function  ListVacina() {
 
   return (
     <div className={css["list-vacina"]}>
-      <Loader active={!values.length} />
+      {/* <Loader active={!values.length} /> */}
       <table>
         <thead>
           <tr>
@@ -49,7 +49,8 @@ export default function  ListVacina() {
           </tr>
         </thead>
         <tbody>
-          {values.map((value)=>
+          {values.length > 0 ? (
+            values.map((value) => (
             <tr>
               <th>{value.pet.name}</th>
               <th>{value.vacina}</th>
@@ -84,8 +85,13 @@ export default function  ListVacina() {
                 >Deletar</button>
               </th>
             </tr>         
-          )}
-           
+            ))
+          ) : (
+              <tr>   
+              <th className={css['empty']}>Nenhuma consulta cadastrado ainda 🐶</th>
+               </tr> 
+                )
+          }  
         </tbody>
       </table>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>

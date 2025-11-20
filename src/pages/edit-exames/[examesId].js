@@ -1,5 +1,5 @@
 
-import VermifugoForm from "@/components/vermifugo-form";
+import ExamesForm from "@/components/exames-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
@@ -7,11 +7,11 @@ import React from "react";
 export default function BlogPostPage(props) {
   const router = useRouter();
 
-  const vermifugoId = router.query.vermifugoId;
+  const examesId = router.query.examesId;
   const [values, setValues] = React.useState(null);
 
-  async function fetchVacina() {
-    const { data, error } = await postJson("/api/vermifugo/find", {id: vermifugoId});
+  async function fetchExames() {
+    const { data, error } = await postJson("/api/exames/find", {id: examesId});
 
     if (error) {
       alert("erro");
@@ -21,8 +21,8 @@ export default function BlogPostPage(props) {
   }
 
   React.useEffect((_) => {
-    if (vermifugoId) fetchVacina();
-  }, [vermifugoId]);
+    if (examesId) fetchExames();
+  }, [examesId]);
 
   function onChange (event) {
     const { name, value } = event.target;
@@ -39,10 +39,10 @@ export default function BlogPostPage(props) {
       try {
   
         const { data, error } = await postJson(
-          '/api/vermifugo/upsert',
+          '/api/exames/upsert',
           {
             ...values,
-            id: vermifugoId
+            id: examesId
           }
         );
         
@@ -53,7 +53,7 @@ export default function BlogPostPage(props) {
         }
   
         alert('deu certo' + data);
-        router.push('/ListVermifugo');
+        router.push('/ListExames');
       } catch (error) {
         console.error(error);
       }
@@ -62,8 +62,8 @@ export default function BlogPostPage(props) {
   return (
     <div>
       <div>
-        <VermifugoForm
-          loading={!(vermifugoId && values)}
+        <ExamesForm
+          loading={!(examesId && values)}
           values={values}
           onChange={onChange}
         />
@@ -71,7 +71,7 @@ export default function BlogPostPage(props) {
         <button
           type="submit"
           onClick={handleSubmit}
-          disabled={!(vermifugoId && values)}
+          disabled={!(examesId && values)}
         >
           Enviar
         </button>

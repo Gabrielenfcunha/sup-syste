@@ -5,7 +5,7 @@ import React from "react";
 import css from './styles.module.scss';
 import { Loader } from "../loader";
 
-export default function VermifugoForm(props) {
+export default function ExamesForm(props) {
 
   const { values, onChange, loading } = props;
   const [userPets, setUserPets] = React.useState([]);
@@ -29,14 +29,14 @@ export default function VermifugoForm(props) {
 
   return <div className={css["vacina-form"]}>
     <h2 className={css["title"]}>
-      Titulo do formulario
+     Medicamento
     </h2>
     <Loader active={!userPets.length} />
     <div  className={css["form-group"]}>
     <select
-      name="pet_vermifugo"
+      name="pet"
       className={css['pets-list']}
-      value={values?.['pet_vermifugo']?.id}
+      value={values?.['pet']?.id}
       onChange={onChange}>
       <option></option>
       {
@@ -52,23 +52,23 @@ export default function VermifugoForm(props) {
       }
     </select>
         <input
-          placeholder='vermifugo'
-          name='vermifugo'
-          value={values?.['vermifugo']}
+          placeholder='exames'
+          name='exames'
+          value={values?.['exames']}
           onChange={onChange}
          />
-         <input
-          placeholder='tipo_vermifugo'
-          name='tipo_vermifugo'
-          value={values?.['tipo_vermifugo']}
+        <input
+         placeholder="detalhe"
+          name='detalhe'
+          value={values?.['detalhe']}
           onChange={onChange}
          />
-         <input
-         placeholder="data_vermifugo"
-          name='data_vermifugo'
-          value={values?.['data_vermifugo']}
+        <input
+         placeholder="data_exames"
+          name='data_exames'
+          value={values?.['data_exames']}
           onChange={onChange}
-          type='date'
+          type="date"
          />
       </div>
   </div>

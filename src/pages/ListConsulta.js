@@ -8,14 +8,14 @@ import Link from "next/link";
 import css from "../styles/listVacina.module.scss"
 
 
-export default function  ListMedicacao() {
+export default function  Listconsulta() {
 
   const router = useRouter();
   const [values, setValues] = React.useState([]);
 
-  async function fetchmedicacao() {
+  async function fetchconsulta() {
     const {data, error} = await postJson(
-      '/api/medicacao/list',
+      '/api/consulta/list',
       {}
     );
 
@@ -28,46 +28,41 @@ export default function  ListMedicacao() {
 
     
   React.useEffect(_ => {
-    fetchmedicacao();
+    fetchconsulta();
   }, []);
 
   return (
     <div className={css["list-vacina"]}>
-      
-      <div>
-        <h2> 
-          Medicação
-        </h2>
-      </div>
+      {/* <Loader active={!values.length} /> */}
       <table>
         <thead>
           <tr>
             <th>Nome do pet</th>
-            <th>medicacao</th>
-            <th>Quantidade</th>
-            <th>apresencao</th>
-            <th>via_admi</th>
-            <th>especial</th>
-            <th>tipo_med</th>
+            <th>consulta</th>
+            <th>data consulta</th>
+            <th>horaio</th>
+            <th>veterinario</th>
+            <th>local</th>
+            <th>detalhes</th>
             <th>edit</th>
             <th>delete</th>
           </tr>
         </thead>
         <tbody>
           {values.length > 0 ? (
-    values.map((value) => (
-       <tr>
+            values.map((value) => (
+            <tr>
               <th>{value.pet.name}</th>
-              <th>{value.medicamento}</th>
-              <th>{value.quantidade}</th>
-              <th>{value.apresencao}</th>
-              <th>{value.via_admi}</th>
-              <th>{value.especial}</th>
-              <th>{value.tipo_med}</th>
+              <th>{value.consulta}</th>
+              <th>{value.data_consulta}</th>
+              <th>{value.horaio}</th>
+              <th>{value.veterinario}</th>
+              <th>{value.local}</th>
+              <th>{value.detalhes}</th>
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {
-                    router.push(`/edit-medicacao/${value.id}`);
+                    router.push(`/edit-consulta/${value.id}`);
                   }}
                 >Edit</button>
               </th>
@@ -76,26 +71,24 @@ export default function  ListMedicacao() {
                   onClick={async _ => {
                     if (!window.confirm('tem certeza?')) {return;}
                     const {data, error} = await postJson(
-                        '/api/medicacao/delete',
+                        '/api/consulta/delete',
                         {id:value.id}
                       );             
                       
                       if (error) {
                         //
                       } else {
-                        fetchmedicacao();
+                        fetchconsulta();
                       }
                   }}
                 >Deletar</button>
               </th>
-            </tr>     
-
+            </tr>         
             ))
-          ) : (
-           <tr>   
+          ) : (<tr>   
               <th className={css['empty']}>Nenhuma consulta cadastrado ainda 🐶</th>
-            </tr> 
-          )}           
+               </tr> )
+          }  
         </tbody>
       </table>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>

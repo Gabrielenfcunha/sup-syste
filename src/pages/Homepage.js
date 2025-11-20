@@ -94,7 +94,11 @@ function calcularIdade(dataNascimento) {
             <Link href='/ListVermifugo'>Lista Vermifugo</Link>
             <Link href='/SignUpVermifugo'>criar Vermifugo</Link>
             <Link href='/ListMedicacao'>Lista Medicaçao</Link>
+            <Link href='/SignUpMedicacao'>criar Medicaçao</Link>
             <Link href='/ListExames'>Lista Exames</Link>
+            <Link href='/SignUpExames'>criar Exames</Link>
+            <Link href='/ListConsulta'> lista consulta</Link>
+            <Link href='/SignUpConsulta'> lista consulta</Link>
             <button className={css['logout']} onClick={handleLogout}>Sair</button>
           </nav>
         </aside>
@@ -113,7 +117,7 @@ function calcularIdade(dataNascimento) {
           <p><strong>Espécie:</strong> {pet.especie || 'Não informado'}</p>
           <p><strong>Idade:</strong> {calcularIdade(pet.data)}</p>
           <Link href={`edit-pet/${pet.id}`} className={css['detailsBtn']}> 
-            Ver detalhes
+            Editar o pet 
           </Link>
         </div>
       </div>

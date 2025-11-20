@@ -47,7 +47,8 @@ export default function  ListVermifugo() {
           </tr>
         </thead>
         <tbody>
-          {values.map((value)=>
+          {values.length > 0 ? (
+            values.map((value) => (
             <tr>
               <th>{value.pet_vermifugo?.name}</th>
               <th>{value.vermifugo}</th>
@@ -57,7 +58,7 @@ export default function  ListVermifugo() {
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {
-                    router.push(`/edit-vacina/${value.id}`);
+                    router.push(`/edit-vermifugo/${value.id}`);
                   }}
                 >Edit</button>
               </th>
@@ -79,8 +80,13 @@ export default function  ListVermifugo() {
                 >Deletar</button>
               </th>
             </tr>         
-          )}
-           
+            ))
+          ) : (
+              <tr>   
+              <th className={css['empty']}>Nenhuma consulta cadastrado ainda 🐶</th>
+               </tr> 
+                )
+          }
         </tbody>
       </table>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>

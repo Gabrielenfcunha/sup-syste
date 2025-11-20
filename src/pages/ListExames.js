@@ -33,7 +33,7 @@ export default function  Listexames() {
 
   return (
     <div className={css["list-vacina"]}>
-      <Loader active={!values.length} />
+      {/* <Loader active={!values.length} /> */}
       <table>
         <thead>
           <tr>
@@ -46,7 +46,8 @@ export default function  Listexames() {
           </tr>
         </thead>
         <tbody>
-          {values.map((value)=>
+          {values.length > 0 ? (
+            values.map((value) => (
             <tr>
               <th>{value.pet.name}</th>
               <th>{value.exames}</th>
@@ -55,7 +56,7 @@ export default function  Listexames() {
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {
-                    router.push(`/edit-vacina/${value.id}`);
+                    router.push(`/edit-exames/${value.id}`);
                   }}
                 >Edit</button>
               </th>
@@ -77,8 +78,11 @@ export default function  Listexames() {
                 >Deletar</button>
               </th>
             </tr>         
-          )}
-           
+            ))
+          ) : (<tr>   
+              <th className={css['empty']}>Nenhuma consulta cadastrado ainda 🐶</th>
+               </tr> )
+          }  
         </tbody>
       </table>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>

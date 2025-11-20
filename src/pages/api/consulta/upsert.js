@@ -15,9 +15,9 @@ export default async function handler(req, res) {
     }
 
     delete submitedData.token;
-    submitedData.pet_vermifugo = parseInt(submitedData.pet_vermifugo.id  || submitedData.pet_vermifugosup-syste.vercel.app)
+    submitedData.pet = parseInt(submitedData.pet.id || submitedData.pet)
     const {data, error} = await supabase
-      .from('vermifugoo')
+      .from('consulta')
       .upsert(submitedData);
 
     res.status(200).json({ data, error });

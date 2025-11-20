@@ -29,14 +29,14 @@ export default function VermifugoForm(props) {
 
   return <div className={css["vacina-form"]}>
     <h2 className={css["title"]}>
-      Titulo do formulario
+     Medicamento
     </h2>
     <Loader active={!userPets.length} />
     <div  className={css["form-group"]}>
     <select
-      name="pet_vermifugo"
+      name="pet"
       className={css['pets-list']}
-      value={values?.['pet_vermifugo']?.id}
+      value={values?.['pet']?.id}
       onChange={onChange}>
       <option></option>
       {
@@ -52,23 +52,40 @@ export default function VermifugoForm(props) {
       }
     </select>
         <input
-          placeholder='vermifugo'
-          name='vermifugo'
-          value={values?.['vermifugo']}
+          placeholder='medicamento'
+          name='medicamento'
+          value={values?.['medicamento']}
           onChange={onChange}
          />
          <input
-          placeholder='tipo_vermifugo'
-          name='tipo_vermifugo'
-          value={values?.['tipo_vermifugo']}
+          placeholder='quantidade'
+          name='quantidade'
+          value={values?.['quantidade']}
           onChange={onChange}
          />
          <input
-         placeholder="data_vermifugo"
-          name='data_vermifugo'
-          value={values?.['data_vermifugo']}
+         placeholder="apresencao"
+          name='apresencao'
+          value={values?.['apresencao']}
           onChange={onChange}
-          type='date'
+         />
+        <input
+         placeholder="via_admi"
+          name='via_admi'
+          value={values?.['via_admi']}
+          onChange={onChange}
+         />
+        <input
+         placeholder="especial"
+          name='especial'
+          value={values?.['especial']}
+          onChange={onChange}
+         />
+        <input
+         placeholder="tipo_med"
+          name='tipo_med'
+          value={values?.['tipo_med']}
+          onChange={onChange}
          />
       </div>
   </div>

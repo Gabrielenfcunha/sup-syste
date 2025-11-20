@@ -5,7 +5,7 @@ import React from "react";
 import css from './styles.module.scss';
 import { Loader } from "../loader";
 
-export default function VermifugoForm(props) {
+export default function ConsultaForm(props) {
 
   const { values, onChange, loading } = props;
   const [userPets, setUserPets] = React.useState([]);
@@ -29,14 +29,14 @@ export default function VermifugoForm(props) {
 
   return <div className={css["vacina-form"]}>
     <h2 className={css["title"]}>
-      Titulo do formulario
+     Medicamento
     </h2>
     <Loader active={!userPets.length} />
     <div  className={css["form-group"]}>
     <select
-      name="pet_vermifugo"
+      name="pet"
       className={css['pets-list']}
-      value={values?.['pet_vermifugo']?.id}
+      value={values?.['pet']?.id}
       onChange={onChange}>
       <option></option>
       {
@@ -52,23 +52,41 @@ export default function VermifugoForm(props) {
       }
     </select>
         <input
-          placeholder='vermifugo'
-          name='vermifugo'
-          value={values?.['vermifugo']}
+          placeholder='consulta'
+          name='consulta'
+          value={values?.['consulta']}
           onChange={onChange}
          />
-         <input
-          placeholder='tipo_vermifugo'
-          name='tipo_vermifugo'
-          value={values?.['tipo_vermifugo']}
+        <input
+         placeholder="local"
+          name='local'
+          value={values?.['local']}
           onChange={onChange}
          />
-         <input
-         placeholder="data_vermifugo"
-          name='data_vermifugo'
-          value={values?.['data_vermifugo']}
+        <input
+         placeholder="detalhes"
+          name='detalhes'
+          value={values?.['detalhes']}
           onChange={onChange}
-          type='date'
+         />
+        <input
+         placeholder="veterinario"
+          name='veterinario'
+          value={values?.['veterinario']}
+          onChange={onChange}
+         />
+        <input
+         placeholder="horaio"
+          name='horaio'
+          value={values?.['horaio']}
+          onChange={onChange}
+         />
+        <input
+         placeholder="data_consulta"
+          name='data_consulta'
+          value={values?.['data_consulta']}
+          onChange={onChange}
+          type="date"
          />
       </div>
   </div>
