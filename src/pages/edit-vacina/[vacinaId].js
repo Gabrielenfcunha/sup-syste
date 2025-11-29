@@ -3,6 +3,7 @@ import VacinaForm from "@/components/vacina-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
+import css from "../../styles/signup.module.scss"
 
 export default function BlogPostPage(props) {
   const router = useRouter();
@@ -72,6 +73,7 @@ export default function BlogPostPage(props) {
           type="submit"
           onClick={handleSubmit}
           disabled={!(vacinaId && values)}
+          className={css["btn-submit"]}
         >
           Enviar
         </button>

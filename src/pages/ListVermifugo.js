@@ -40,7 +40,6 @@ export default function  ListVermifugo() {
             <th>Nome do pet</th>
             <th>vermifugo</th>
             <th>tipo vermifugo</th>
-            <th>veterinario</th>
             <th>data vermifugo</th>
             <th>edit</th>
             <th>delete</th>
@@ -50,7 +49,7 @@ export default function  ListVermifugo() {
           {values.length > 0 ? (
             values.map((value) => (
             <tr>
-              <th>{value.pet_vermifugo?.name}</th>
+              <th>{value.pet?.name}</th>
               <th>{value.vermifugo}</th>
               <th>{value.tipo_vermifugo}</th>
               <th>{value.data_vermifugo}</th>
@@ -90,6 +89,8 @@ export default function  ListVermifugo() {
         </tbody>
       </table>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+      
+      <Link href='/SignUpVermifugo' className={css["btn-back"]}>+</Link>
 
     </div>
   )

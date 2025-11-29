@@ -22,9 +22,9 @@ export default async function handler(req, res) {
         vermifugo,
         data_vermifugo,
         tipo_vermifugo,
-        pet_vermifugo(id, name, dono)
+        pet(id, name, dono)
       `)
-      .eq('pet_vermifugo.dono', userId)
+      .eq('pet.dono', userId)
       .eq('id', id)
       .limit(1);
 

@@ -36,9 +36,9 @@ export default async function handlerDelete(req, res) {
 async function belongsToUser (vacId, userId) {
   const {data, error} = await supabase
     .from('vermifugoo')
-    .select('id, pet_vermifugo(dono)')
+    .select('id, pet(dono)')
     .eq('id', vacId)
-    .eq('pet_vermifugo.dono', userId);
+    .eq('pet.dono', userId);
 
   if (error) {
     console.error(error);

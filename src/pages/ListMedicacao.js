@@ -99,6 +99,7 @@ export default function  ListMedicacao() {
         </tbody>
       </table>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+      <Link href='/SignUpMedicacao' className={css["btn-back"]}>+</Link>
 
     </div>
   )

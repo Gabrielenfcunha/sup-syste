@@ -10,6 +10,7 @@ export default function Homepage ({token}) {
   
   const router = useRouter();
   const [values, setValues] = React.useState([]);
+  const [menuOpen, setMenuOpen] = useState(false); // ⬅ ADICIONE ISSO
 
   function handleLogout(){
     sessionStorage.removeItem('token')
@@ -59,47 +60,39 @@ function calcularIdade(dataNascimento) {
 
 
   return(
- <div className={css.homepage}>
+<div className={css.homepage}>
 
       {/* ==== NAVBAR ==== */}
-      <nav className={css['navbar']}>
-        <div className={css['logo']}>
+      <nav className={css.navbar}>  
+        {/* BOTÃO HAMBÚRGUER */}
+        <button className={css.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+        <div className={css.logo}>
           <span>🐾SUP</span>
-        </div>
-
-        <div className={css['search']}>
-          <input type="text" placeholder="Pesquisar..." />
-          <button>
-            <i className={css["fas fa-search"]}></i>
-          </button>
         </div>
       </nav>
 
       {/* ==== CONTEÚDO ==== */}
-      <div className={css['container']}>
+      <div className={css.container}>
 
         {/* ==== SIDEBAR ==== */}
-        <aside className={css['sidebar']}>
-          <div className={css['profile']}>
-            <div className={css['avatar']}>
+        <aside className={`${css.sidebar} ${menuOpen ? css.open : ''}`}> 
+          <div className={css.profile}>
+            <div className={css.avatar}>
               <i className="fas fa-user-circle"></i>
             </div>
-            <p className={css['name']}>{token.user?.user_metadata?.full_name}</p>
+            <p className={css.name}>{token.user?.user_metadata?.full_name}</p>
           </div>
 
-          <nav className={css['menu']}>
-            <Link href='/ListPets' >Lista Pets</Link>
-            <Link href='/ListVacina' >Lista Vacina</Link>
-            <Link href='/SignUpVacina' >Criar Vacina</Link>
-            <Link href='/ListVermifugo'>Lista Vermifugo</Link>
-            <Link href='/SignUpVermifugo'>criar Vermifugo</Link>
-            <Link href='/ListMedicacao'>Lista Medicaçao</Link>
-            <Link href='/SignUpMedicacao'>criar Medicaçao</Link>
-            <Link href='/ListExames'>Lista Exames</Link>
-            <Link href='/SignUpExames'>criar Exames</Link>
-            <Link href='/ListConsulta'> lista consulta</Link>
-            <Link href='/SignUpConsulta'> lista consulta</Link>
-            <button className={css['logout']} onClick={handleLogout}>Sair</button>
+          <nav className={css.menu}>
+            <Link href='/ListPets'>Lista Pets</Link>
+            <Link href='/ListVacina'>Vacina</Link>
+            <Link href='/ListVermifugo'>Vermifugo</Link>
+            <Link href='/ListMedicacao'>Medicação</Link>
+            <Link href='/ListExames'>Exames</Link>
+            <Link href='/ListConsulta'>Consulta</Link>
+            <button className={css.logout} onClick={handleLogout}>Sair</button>
           </nav>
         </aside>
 
@@ -116,7 +109,7 @@ function calcularIdade(dataNascimento) {
           <h3>{pet.name}</h3>
           <p><strong>Espécie:</strong> {pet.especie || 'Não informado'}</p>
           <p><strong>Idade:</strong> {calcularIdade(pet.data)}</p>
-          <Link href={`edit-pet/${pet.id}`} className={css['detailsBtn']}> 
+          <Link href={`list-pet/${pet.id}`} className={css['detailsBtn']}> 
             Editar o pet 
           </Link>
         </div>

@@ -10,7 +10,7 @@ export default function BlogPostPage(props) {
   const vermifugoId = router.query.vermifugoId;
   const [values, setValues] = React.useState(null);
 
-  async function fetchVacina() {
+  async function fetchVermufugo() {
     const { data, error } = await postJson("/api/vermifugo/find", {id: vermifugoId});
 
     if (error) {
@@ -21,7 +21,7 @@ export default function BlogPostPage(props) {
   }
 
   React.useEffect((_) => {
-    if (vermifugoId) fetchVacina();
+    if (vermifugoId) fetchVermufugo();
   }, [vermifugoId]);
 
   function onChange (event) {

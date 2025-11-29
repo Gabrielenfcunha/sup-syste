@@ -95,6 +95,7 @@ export default function  ListVacina() {
         </tbody>
       </table>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+      <Link href='/SignUpVacina'className={css["btn-back"]}>+</Link>
 
     </div>
   )

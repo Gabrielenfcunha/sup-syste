@@ -91,6 +91,7 @@ export default function  Listconsulta() {
           }  
         </tbody>
       </table>
+      <Link href='/SignUpConsulta'className={css["btn-back"]} >+</Link>
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
 
     </div>
