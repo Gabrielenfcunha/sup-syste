@@ -1,0 +1,243 @@
+
+.homepage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "emoji";
+  background-color: #f7f7f7;
+
+  /* ==== NAVBAR ==== */
+  .navbar {
+    background: linear-gradient(16deg,#90c2e5,  #8c52ff);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 rem;
+    border-bottom: 1px solid #90c2e5;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      span {
+        padding-left: 0.8rem;
+        font-weight: 500;
+        font-size: 2rem;
+        color: #ffffff;
+
+        @media (max-width: 768px) {
+          display: block;
+          padding-right: 480px;
+
+        }
+      }
+    }
+  }
+
+  /* ==== CONTEÚDO PRINCIPAL ==== */
+  .container {
+    display: flex;
+    flex: 1;
+  }
+
+  /* ==== SIDEBAR ==== */
+  .sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background:linear-gradient(249deg, #90c2e5, #8c52ff);
+    padding: 20px;
+    border-right: 2px solid #fffefe;
+    transition: transform 0.3s ease-in-out;
+    border-radius: 10px;
+  
+
+    // Modo mobile: escondida
+    @media (max-width: 768px) {
+      position: fixed;
+      top: 60px; 
+      left: 0;
+      transform: translateX(-100%);
+      z-index: 10;
+    }
+
+    .avatar {
+      font-size: 7rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .name {
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+  
+
+    .menu {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      width: 100%;
+      text-align: center;
+    .logout {
+      padding: 0.5rem 1rem;
+  
+    img {
+      width: 50px;
+      max-width: 500px;
+    }
+
+    }
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.5rem;
+        transition: 0.3s;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      
+    }
+  }
+  // QUANDO ABERTA NO MOBILE
+.open {
+  transform: translateX(0) !important;
+}
+/* ===== HAMBÚRGUER ===== */
+.hamburger {
+
+  padding-left: 20px;
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+  .hanb{
+  padding: .2rem;
+  display: none;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  }
+}
+/* ===== CONTAINER ===== */
+.container {
+  display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+  /* ==== MAIN ==== */
+  .main {
+    flex: 1;
+    padding: 2rem;
+
+    h2 {
+      color:  #8c52ff;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      padding-left: 30px;
+    }
+
+    .pets {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      
+        @media (max-width: 768px) {
+          padding-left: 20px;
+        }
+      .petCard,
+      .addCard {
+        width:200px;
+        height: 200px;
+        background: linear-gradient(16deg,#90c2e5,  #8c52ff);
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: 0.3s;
+        text-decoration: none;
+
+
+
+        i {
+          font-size: 2rem;
+          margin-bottom: 0.3rem;
+        }
+
+        span {
+          font-size: 9rem;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+          background-color: #6b8ea0;
+        }
+      }
+
+      .addCard span {
+        font-size: 2rem;
+        font-weight: bold;
+      }
+    }
+
+    .buttonGroup {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+
+      .btn {
+        background-color: #7da0b4;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: #5e859b;
+        }
+      }
+    }
+  }
+.petInfo{
+  font-size: .9rem;
+  h3{
+    margin-top: .2rem;
+    font-size: 2rem;
+    padding-left: 1rem;
+
+  }
+  p{
+    margin-top: .6rem;
+    font-size: 1.4rem;
+    padding-left: 0.8rem;
+
+  }
+  .detailsBtn{
+    margin-top: .6rem;
+    font-size: 1.4rem;
+    padding: 1rem;
+  }
+}
+}

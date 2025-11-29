@@ -1,0 +1,104 @@
+.loginContainer {
+  border-radius: 8px;
+  display: flex;
+  min-height: 100vh;
+  background-color: #ffffff;
+  font-family: #000;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+  }
+}
+// 🔹 Seção do formulário
+.formSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  
+
+  h1 {
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 2rem;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    input {
+      padding: 0.9rem 1rem;
+      border: 2px solid lighten(#000000, 20%);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: #00c853;
+      }
+    }
+
+    button {
+      background-color:#7184ee;
+      color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 8px;
+      padding: 0.9rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+
+      // &:hover {
+      //   background-color: darken(#00d9ff, 10%);
+      // }
+    }
+  }
+}
+
+// 🔹 Seção lateral
+.sideSection {
+  flex: 1;
+  background: linear-gradient(145deg, #8c52ff,  #5ce1e6);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  text-align: left;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+  }
+
+  .signupBtn {
+    background: white;
+    color:  #009688;
+    padding: 0.9rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    width: fit-content;
+    transition: all 0.3s ease;
+
+
+  }
+
+  @media (max-width: 850px) {
+    text-align: center;
+    align-items: center;
+  }
+}

@@ -65,13 +65,13 @@ function calcularIdade(dataNascimento) {
       {/* ==== NAVBAR ==== */}
       <nav className={css.navbar}>  
         {/* BOTÃO HAMBÚRGUER */}
-        <div className={css.logo}>
-          <span>🐾SUP</span>
-        </div>
         <div className={css.hamburger}>
           <button className={css.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
             ☰
           </button>
+        </div>
+        <div className={css.logo}>
+          <span>🐾SUP</span>
         </div>
       </nav>
 
