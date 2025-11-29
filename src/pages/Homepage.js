@@ -65,11 +65,13 @@ function calcularIdade(dataNascimento) {
       {/* ==== NAVBAR ==== */}
       <nav className={css.navbar}>  
         {/* BOTÃO HAMBÚRGUER */}
-        <button className={css.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
-          ☰
-        </button>
         <div className={css.logo}>
           <span>🐾SUP</span>
+        </div>
+        <div className={css.hamburger}>
+          <button className={css.hamburger} onClick={() => setMenuOpen(!menuOpen)}>
+            ☰
+          </button>
         </div>
       </nav>
 
@@ -79,9 +81,7 @@ function calcularIdade(dataNascimento) {
         {/* ==== SIDEBAR ==== */}
         <aside className={`${css.sidebar} ${menuOpen ? css.open : ''}`}> 
           <div className={css.profile}>
-            <div className={css.avatar}>
-              <i className="fas fa-user-circle"></i>
-            </div>
+
             <p className={css.name}>{token.user?.user_metadata?.full_name}</p>
           </div>
 
@@ -92,24 +92,25 @@ function calcularIdade(dataNascimento) {
             <Link href='/ListMedicacao'>Medicação</Link>
             <Link href='/ListExames'>Exames</Link>
             <Link href='/ListConsulta'>Consulta</Link>
-            <button className={css.logout} onClick={handleLogout}>Sair</button>
+            <Link href='/ListConsulta'>Compartilhar</Link>
+            <div className={css.logout}>
+             <img src="/img/sair.png"  onClick={handleLogout} alt="button" />
+            </div>
           </nav>
         </aside>
 
         {/* ==== MAIN ==== */}
-        <main className={css['main']}>
+        <main className={css.main}>
           <h2>Meus Pets</h2>
-          <div className={css['pets']}>
-  {values.length > 0 ? (
-    values.map((pet) => (
-      <div key={pet.id} className={css['petCard']}>
-
-
-        <div className={css['petInfo']}>
+      <div className={css.pets}>
+          {values.length > 0 ? (
+            values.map((pet) => (
+      <div key={pet.id} className={css.petCard}>
+        <div className={css.petInfo}>
           <h3>{pet.name}</h3>
           <p><strong>Espécie:</strong> {pet.especie || 'Não informado'}</p>
           <p><strong>Idade:</strong> {calcularIdade(pet.data)}</p>
-          <Link href={`list-pet/${pet.id}`} className={css['detailsBtn']}> 
+          <Link href={`edit-pet/${pet.id}`} className={css.detailsBtn}> 
             Editar o pet 
           </Link>
         </div>
