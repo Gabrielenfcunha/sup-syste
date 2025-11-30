@@ -33,12 +33,12 @@ export default function  ListMedicacao() {
 
   return (
     <div className={css["list-vacina"]}>
-      <Loader active={!values.length} />
       <div>
         <h2> 
           Medicação
         </h2>
       </div>
+      <Loader active={!values.length} />
       <table>
         <thead>
           <tr>
