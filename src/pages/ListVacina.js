@@ -33,7 +33,7 @@ export default function  ListVacina() {
 
   return (
     <div className={css["list-vacina"]}>
-      {/* <Loader active={!values.length} /> */}
+      <Loader active={!values.length} />
       <table>
         <thead>
           <tr>
