@@ -61,7 +61,7 @@ export default function BlogPostPage(props) {
     }
 
   return (
-    <div>
+    <div className={css["signup-container"]}>
       <div>
         <VacinaForm
           loading={!(vacinaId && values)}

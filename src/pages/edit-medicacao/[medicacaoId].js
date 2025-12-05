@@ -3,6 +3,7 @@ import MedicacaoForm from "@/components/medicacao-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
+import css from "../../styles/signup.module.scss"
 
 export default function BlogPostPage(props) {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function BlogPostPage(props) {
   const medicacaoId = router.query.medicacaoId;
   const [values, setValues] = React.useState(null);
 
-  async function fetchVacina() {
+  async function fetchMedicacao() {
     const { data, error } = await postJson("/api/medicacao/find", {id: medicacaoId});
 
     if (error) {
@@ -21,7 +22,7 @@ export default function BlogPostPage(props) {
   }
 
   React.useEffect((_) => {
-    if (medicacaoId) fetchVacina();
+    if (medicacaoId) fetchMedicacao();
   }, [medicacaoId]);
 
   function onChange (event) {
@@ -60,7 +61,8 @@ export default function BlogPostPage(props) {
     }
 
   return (
-    <div>
+    <div className={css["signup-container"]}>
+      <h2 className={css["title"]}></h2>
       <div>
         <MedicacaoForm
           loading={!(medicacaoId && values)}
@@ -72,6 +74,7 @@ export default function BlogPostPage(props) {
           type="submit"
           onClick={handleSubmit}
           disabled={!(medicacaoId && values)}
+          className={css["btn-submit"]}
         >
           Enviar
         </button>

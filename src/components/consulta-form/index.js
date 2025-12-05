@@ -29,7 +29,7 @@ export default function ConsultaForm(props) {
 
   return <div className={css["vacina-form"]}>
     <h2 className={css["title"]}>
-     Medicamento
+     Consulta
     </h2>
     <Loader active={!userPets.length} />
     <div  className={css["form-group"]}>
@@ -58,13 +58,13 @@ export default function ConsultaForm(props) {
           onChange={onChange}
          />
         <input
-         placeholder="local"
+         placeholder='local'
           name='local'
           value={values?.['local']}
           onChange={onChange}
          />
         <input
-         placeholder="detalhes"
+         placeholder='detalhes'
           name='detalhes'
           value={values?.['detalhes']}
           onChange={onChange}

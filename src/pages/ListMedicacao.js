@@ -88,7 +88,7 @@ export default function  ListMedicacao() {
             ))
           ) : (
            <tr>   
-              <th className={css['empty']}>Nenhuma consulta cadastrado ainda 🐶</th>
+              <th className={css.empty}>Nenhuma consulta cadastrado ainda 🐶</th>
             </tr> 
           )}           
         </tbody>

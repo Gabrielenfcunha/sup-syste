@@ -3,7 +3,7 @@ import PetForm from "@/components/pet-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
-import css from "../../styles/signup.module.scss"
+import css from "../../styles/listVacina.module.scss"
 
 export default function BlogPostPage(props) {
   const router = useRouter();

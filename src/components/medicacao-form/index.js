@@ -5,7 +5,7 @@ import React from "react";
 import css from './styles.module.scss';
 import { Loader } from "../loader";
 
-export default function VermifugoForm(props) {
+export default function MedicaForm(props) {
 
   const { values, onChange, loading } = props;
   const [userPets, setUserPets] = React.useState([]);

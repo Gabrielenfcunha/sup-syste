@@ -4,7 +4,7 @@ import React from "react";
 import css from './styles.module.scss';
 import { Loader } from "../loader";
 
-export default function vacinaForm(props) {
+export default function VacinaForm(props) {
 
   const { values, onChange, loading } = props;
   const [userPets, setUserPets] = React.useState([]);
@@ -29,7 +29,7 @@ export default function vacinaForm(props) {
   return( 
     <div className={css["vacina-form"]}>
       <h2 className={css["title"]}>
-        Titulo do formulario
+        vacina      
       </h2>
       <Loader active={!userPets.length} />
       <div  className={css["form-group"]}>

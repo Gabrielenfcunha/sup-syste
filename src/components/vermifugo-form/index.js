@@ -28,7 +28,7 @@ export default function VermifugoForm(props) {
   return( 
     <div className={css["vacina-form"]}>
       <h2 className={css["title"]}>
-        Titulo do formulario
+        vermifugo
       </h2>
       <Loader active={!userPets.length} />
       <div  className={css["form-group"]}>
@@ -63,7 +63,7 @@ export default function VermifugoForm(props) {
               onChange={onChange}
             />
             <input
-            placeholder="data_vermifugo"
+            placeholder='data_vermifugo'
               name='data_vermifugo'
               value={values?.['data_vermifugo']}
               onChange={onChange}

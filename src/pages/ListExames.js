@@ -85,9 +85,14 @@ export default function  Listexames() {
           }  
         </tbody>
       </table>
+      <div className={css["btn-back"]}>
+        <Link href ='/Homepage' className={css["btn-b"]}>Voltar</Link>
+      </div>
 
-      <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
-      <Link href='/SignUpExames' className={css["btn-back"]}>+</Link>
+      <div className={css["btn-back"]}>
+        <Link href='/SignUpExames' className={css["btn-b"]} >+</Link>
+      </div>
+     
 
     </div>
   )

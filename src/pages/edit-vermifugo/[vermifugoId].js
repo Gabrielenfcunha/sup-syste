@@ -3,6 +3,7 @@ import VermifugoForm from "@/components/vermifugo-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
+import css from "../../styles/signup.module.scss";
 
 export default function BlogPostPage(props) {
   const router = useRouter();
@@ -60,7 +61,7 @@ export default function BlogPostPage(props) {
     }
 
   return (
-    <div>
+    <div className={css["signup-container"]}>
       <div>
         <VermifugoForm
           loading={!(vermifugoId && values)}
@@ -69,9 +70,11 @@ export default function BlogPostPage(props) {
         />
 
         <button
+          className={css["btn-submit"]}
           type="submit"
           onClick={handleSubmit}
           disabled={!(vermifugoId && values)}
+          
         >
           Enviar
         </button>

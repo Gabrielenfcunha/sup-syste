@@ -29,7 +29,7 @@ export default function ExamesForm(props) {
 
   return <div className={css["vacina-form"]}>
     <h2 className={css["title"]}>
-     Medicamento
+     Exames
     </h2>
     <Loader active={!userPets.length} />
     <div  className={css["form-group"]}>

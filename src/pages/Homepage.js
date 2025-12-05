@@ -110,7 +110,7 @@ function calcularIdade(dataNascimento) {
           <h3>{pet.name}</h3>
           <p><strong>Espécie:</strong> {pet.especie || 'Não informado'}</p>
           <p><strong>Idade:</strong> {calcularIdade(pet.data)}</p>
-          <Link href={`edit-pet/${pet.id}`} className={css.detailsBtn}> 
+          <Link href={`list-pets/${pet.id}`} className={css.detailsBtn}> 
             Editar o pet 
           </Link>
         </div>

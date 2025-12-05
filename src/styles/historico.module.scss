@@ -1,0 +1,87 @@
+.signup-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(16deg,#90c2e5,  #8c52ff);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  width: 100%;
+  max-width: 650px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  animation: fadeIn .3s ease;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #eaecef;
+
+  h3 {
+    font-size: 1.4rem;
+    color: #444;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 40px;
+      height: 3px;
+      background: #0070f3;
+      border-radius: 2px;
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    color: #555;
+    margin: 0.3rem 0;
+
+    strong {
+      color: #333;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .section h3 {
+    font-size: 1.2rem;
+  }
+
+  .section p {
+    font-size: .95rem;
+  }
+}

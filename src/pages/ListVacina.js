@@ -8,12 +8,12 @@ import Link from "next/link";
 import css from "../styles/listVacina.module.scss"
 
 
-export default function  ListVacina() {
+export default function  Listvacina() {
 
   const router = useRouter();
   const [values, setValues] = React.useState([]);
 
-  async function fetchvacina() {
+  async function fetchexame() {
     const {data, error} = await postJson(
       '/api/vacina/list',
       {}
@@ -28,7 +28,7 @@ export default function  ListVacina() {
 
     
   React.useEffect(_ => {
-    fetchvacina();
+    fetchexame();
   }, []);
 
   return (
@@ -56,10 +56,9 @@ export default function  ListVacina() {
               <th>{value.vacina}</th>
               <th>{value.marca}</th>
               <th>{value.veterinario}</th>
-              <th>{value.dose}</th>
               <th>{value.fabricacao}</th>
               <th>{value.vencimento}</th>
-
+              <th>{value.dose}</th>
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {
@@ -79,23 +78,22 @@ export default function  ListVacina() {
                       if (error) {
                         //
                       } else {
-                        fetchvacina();
+                        fetchexame();
                       }
                   }}
                 >Deletar</button>
               </th>
             </tr>         
             ))
-          ) : (
-              <tr>   
+          ) : (<tr>   
               <th className={css['empty']}>Nenhuma consulta cadastrado ainda 🐶</th>
-               </tr> 
-                )
+               </tr> )
           }  
         </tbody>
       </table>
+
       <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
-      <Link href='/SignUpVacina'className={css["btn-back"]}>+</Link>
+      <Link href='/SignUpVacina' className={css["btn-back"]}>+</Link>
 
     </div>
   )
