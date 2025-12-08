@@ -32,8 +32,8 @@ export default function PetForm(props) {
             value={values?.['castrdo']}
             onChange={onChange}
           />
-                  <input
-            placeholder='Castrado'
+        <input
+            placeholder='Gênero'
             name='sexo'
             value={values?.['sexo']}
             onChange={onChange}

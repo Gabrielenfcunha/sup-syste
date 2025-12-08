@@ -1,118 +1,127 @@
-
-import PetForm from "@/components/pet-form";
-import ExamesForm from "@/components/exames-form";
-import VermifugoForm from "@/components/vermifugo-form";
-import MedicaForm from "@/components/medicacao-form";
-import VacinaForm from "@/components/vacina-form";
-import ConsultaForm from "@/components/consulta-form";
 import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
-import Link from "next/link";
-import css from "../../styles/listVacina.module.scss"
-
+import css from "../../styles/historico.module.scss"
 
 export default function BlogPostPage(props) {
   const router = useRouter();
 
   const petId = router.query.petId;
-  const [values, setValues] = React.useState(null);
+  const [values, setValues] = React.useState({});
                  
-                                   // PET
+  // PET
   async function fetchPet() {
-    const { data, error } = await postJson("/api/pets/find", {id: petId});
+    const { data, error } = await postJson("/api/externo/" + petId);
 
     if (error) {
       alert("erro");
     } else {
-      setValues(data);
+      setValues(curValues => {
+        return { ...curValues, pet: data };
+      });
     }
   }
-                                        // VERMIFUGO
-    async function fetchVermufugo() {
-      const { data, error } = await postJson("/api/vermifugo/find", {id: petId});
-  
-      if (error) {
-        alert("erro");
-      } else {
-        setValues(data);
-      }
-    }
-    // Medicação
-  async function fetchMedicacao() {
-    const { data, error } = await postJson("/api/medicacao/find", {id: petId});
 
-    if (error) {
-      alert("erro");
-    } else {
-      setValues(data);
+  React.useEffect(() => {
+    async function loadData() {
+      await fetchPet();
     }
-  } 
-// VACINA
-  async function fetchVacina() {
-    const { data, error } = await postJson("/api/vacina/find", {id: petId});
 
-    if (error) {
-      alert("erro");
-    } else {
-      setValues(data);
+    if (petId) {
+      loadData();
     }
-  }
-  async function fetchExames() {
-    const { data, error } = await postJson("/api/exames/find", {id: petId});
-
-    if (error) {
-      alert("erro");
-    } else {
-      setValues(data);
-    }
-  }
-  async function fetchConsulta() {
-    const { data, error } = await postJson("/api/consulta/find", {id: petId});
-
-    if (error) {
-      alert("erro");
-    } else {
-      setValues(data);
-    }
-  }
-  React.useEffect((_) => {
-    if (petId) 
-      fetchVacina();
-      fetchPet();
-      fetchVermufugo();
-      fetchMedicacao();
-      fetchExames();
-      fetchConsulta();
   }, [petId]);
 
- return (
-    <div  className={css["list-vacina"]}>
-      <PetForm
-       loading={!(petId && values)}
-       values={values}
-      />
-      <VermifugoForm
-       loading={!(petId && values)}
-       values={values}
-      />
-      <MedicaForm
-       loading={!(petId && values)}
-       values={values}
-      />
-      <VacinaForm
-       loading={!(petId && values)}
-       values={values}
-      />
-      <ExamesForm
-       loading={!(petId && values)}
-       values={values}
-       />
-      <ConsultaForm
-       loading={!(petId && values)}
-       values={values}
-       />
-      <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+  // EXTRA: evita erro quando ainda não carregou
+  const pet = values.pet || {};
+
+  return (
+    <div className={css["signup-container"]}>
+      <div className={css["card"]}>
+
+        <h2 className={css["title"]}>Informações do Pet 🐾</h2>
+
+        <div className={css["section"]}>
+          <h3>Dados Gerais</h3>
+          <p><strong>ID:</strong> {pet.id}</p>
+          <p><strong>Nome:</strong> {pet.name}</p>
+          <p><strong>Espécie:</strong> {pet.especie}</p>
+          <p><strong>Raça:</strong> {pet.raca}</p>
+          <p><strong>Sexo:</strong> {pet.sexo}</p>
+          <p><strong>Castrado:</strong> {pet.castrdo}</p>
+          <p><strong>Dono:</strong> {pet.dono}</p>
+        </div>
+
+        <div className={css["section"]}>
+          <h3>Vacinas 💉</h3>
+          {pet.vacina?.map((v) => (
+            <div key={v.id}>
+              <p><strong>Vacina:</strong> {v.vacina}</p>
+              <p><strong>Marca:</strong> {v.marca}</p>
+              <p><strong>Veterinário:</strong> {v.veterinario}</p>
+              <p><strong>Fabricação:</strong> {v.fabricacao}</p>
+              <p><strong>Vencimento:</strong> {v.vencimento}</p>
+              <p><strong>Dose:</strong> {v.dose}</p>
+              <br />
+            </div>
+          ))}
+        </div>
+
+        <div className={css["section"]}>
+          <h3>Exames 🧪</h3>
+          {pet.exames?.map((e) => (
+            <div key={e.id}>
+              <p><strong>Exame:</strong> {e.exames}</p>
+              <p><strong>Data:</strong> {e.data_exames}</p>
+              <p><strong>Detalhes:</strong> {e.detalhe}</p>
+              <br />
+            </div>
+          ))}
+        </div>
+
+        <div className={css["section"]}>
+          <h3>Consultas 🩺</h3>
+          {pet.consulta?.map((c) => (
+            <div key={c.id}>
+              <p><strong>Consulta:</strong> {c.consulta}</p>
+              <p><strong>Data:</strong> {c.data_consulta}</p>
+              <p><strong>Horário:</strong> {c.horario}</p>
+              <p><strong>Veterinário:</strong> {c.veterinario}</p>
+              <p><strong>Local:</strong> {c.local}</p>
+              <p><strong>Detalhes:</strong> {c.detalhes}</p>
+              <br />
+            </div>
+          ))}
+        </div>
+
+        <div className={css["section"]}>
+          <h3>Vermífugo 🐛</h3>
+          {pet.vermifugoo?.map((v) => (
+            <div key={v.id}>
+              <p><strong>Vermífugo:</strong> {v.vermifugo}</p>
+              <p><strong>Data:</strong> {v.data_vermifugo}</p>
+              <p><strong>Tipo:</strong> {v.tipo_vermifugo}</p>
+              <br />
+            </div>
+          ))}
+        </div>
+
+        <div className={css["section"]}>
+          <h3>Medicamentos 💊</h3>
+          {pet.medicamento?.map((m) => (
+            <div key={m.id}>
+              <p><strong>Medicamento:</strong> {m.medicamento}</p>
+              <p><strong>Quantidade:</strong> {m.quantidade}</p>
+              <p><strong>Apresentação:</strong> {m.apresencao}</p>
+              <p><strong>Via:</strong> {m.via_admi}</p>
+              <p><strong>Especial:</strong> {m.especial}</p>
+              <p><strong>Tipo:</strong> {m.tipo_med}</p>
+              <br />
+            </div>
+          ))}
+        </div>
+
+      </div>
     </div>
   );
 }

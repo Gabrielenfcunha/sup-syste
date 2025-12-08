@@ -1,6 +1,5 @@
 import { postJson } from "@/util/http";
 import React from "react";
-
 import css from './styles.module.scss';
 import { Loader } from "../loader";
 
@@ -29,7 +28,7 @@ export default function VacinaForm(props) {
   return( 
     <div className={css["vacina-form"]}>
       <h2 className={css["title"]}>
-        vacina      
+        vermifugo
       </h2>
       <Loader active={!userPets.length} />
       <div  className={css["form-group"]}>
@@ -52,7 +51,7 @@ export default function VacinaForm(props) {
           }
         </select>
             <input
-              placeholder='Vacina'
+              placeholder='vacina'
               name='vacina'
               value={values?.['vacina']}
               onChange={onChange}
@@ -63,30 +62,35 @@ export default function VacinaForm(props) {
               value={values?.['marca']}
               onChange={onChange}
             />
-          <input
-              placeholder='veterinario'
+            <input
+            placeholder='veterinario'
               name='veterinario'
               value={values?.['veterinario']}
               onChange={onChange}
             />
             <input
-            placeholder="dose"
+            placeholder='veterinario'
+              name='veterinario'
+              value={values?.['veterinario']}
+              onChange={onChange}
+
+            />
+            <input
+            placeholder='dose'
               name='dose'
               value={values?.['dose']}
               onChange={onChange}
-              
-            />
 
+            />
             <input
-              placeholder='fabricacao'
+            placeholder='fabricacao'
               name='fabricacao'
               value={values?.['fabricacao']}
               onChange={onChange}
-              type="date"
+              type='date'
             />
-
             <input
-            placeholder="vencimento"
+            placeholder='vencimento'
               name='vencimento'
               value={values?.['vencimento']}
               onChange={onChange}

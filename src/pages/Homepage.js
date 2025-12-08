@@ -111,7 +111,7 @@ function calcularIdade(dataNascimento) {
           <p><strong>Espécie:</strong> {pet.especie || 'Não informado'}</p>
           <p><strong>Idade:</strong> {calcularIdade(pet.data)}</p>
           <Link href={`list-pets/${pet.id}`} className={css.detailsBtn}> 
-            Editar o pet 
+            Pet Historico 
           </Link>
         </div>
       </div>

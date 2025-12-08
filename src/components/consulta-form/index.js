@@ -1,7 +1,5 @@
-
 import { postJson } from "@/util/http";
 import React from "react";
-
 import css from './styles.module.scss';
 import { Loader } from "../loader";
 
