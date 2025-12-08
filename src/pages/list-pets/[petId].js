@@ -2,6 +2,7 @@ import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
 import css from "../../styles/historico.module.scss"
+import Link from "next/link";
 import QRCode from "react-qr-code";
 
 export default function BlogPostPage(props) {
@@ -55,7 +56,6 @@ export default function BlogPostPage(props) {
           <p><strong>Raça:</strong> {pet.raca}</p>
           <p><strong>Sexo:</strong> {pet.sexo}</p>
           <p><strong>Castrado:</strong> {pet.castrdo}</p>
-          <p><strong>Dono:</strong> {pet.dono}</p>
         </div>
 
         <div className={css["section"]}>
@@ -128,6 +128,9 @@ export default function BlogPostPage(props) {
         </div>
 
       </div>
+       <div>
+            <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+     </div>
       <div className={css["borda"]}>
         {
           isClient &&
