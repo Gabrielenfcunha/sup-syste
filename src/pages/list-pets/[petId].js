@@ -2,12 +2,14 @@ import { postJson } from "@/util/http";
 import { useRouter } from "next/router";
 import React from "react";
 import css from "../../styles/historico.module.scss"
+import QRCode from "react-qr-code";
 
 export default function BlogPostPage(props) {
   const router = useRouter();
 
   const petId = router.query.petId;
   const [values, setValues] = React.useState({});
+  const [isClient, setIsClient] = React.useState(false);
                  
   // PET
   async function fetchPet() {
@@ -34,6 +36,10 @@ export default function BlogPostPage(props) {
 
   // EXTRA: evita erro quando ainda não carregou
   const pet = values.pet || {};
+
+  React.useEffect(_ => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div className={css["signup-container"]}>
@@ -122,6 +128,14 @@ export default function BlogPostPage(props) {
         </div>
 
       </div>
+      <div className={css["borda"]}>
+        {
+          isClient &&
+            <QRCode
+              value={location?.href || "no url"}
+            />
+        }
+     </div>
     </div>
   );
 }

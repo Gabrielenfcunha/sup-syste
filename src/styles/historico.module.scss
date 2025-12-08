@@ -85,3 +85,16 @@
     font-size: .95rem;
   }
 }
+
+.borda {
+  background: #fff;            // Fundo branco
+  padding: 1rem;               // Espaçamento interno
+  border-radius: 16px;         // Borda arredondada
+  box-shadow: 0 4px 14px rgba(0,0,0,0.1); // Sombra leve
+  border: 3px solid #fff;      // Borda branca forte
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;           // Espaço entre card e QR
+  height: fit-content;
+}
