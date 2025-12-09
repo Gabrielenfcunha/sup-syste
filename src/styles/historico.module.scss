@@ -72,9 +72,11 @@
 }
 
   .btn-back {
-    margin-right: 6rem;
-    margin: .8rem;
-    padding: 0.8rem 1.2rem;
+ 
+ 
+    .btn{
+     margin:4rem;
+    padding: 0.8rem 1rem;
     border: none;
     border-radius: 12px;
     background-color: #5a67d8;
@@ -83,13 +85,13 @@
     font-weight: 500;
     cursor: pointer;
     transition: background 0.3s ease, transform 0.2s;
-
-    &:hover {
+       &:hover {
       background-color: #4c51bf;
       transform: scale(1.03);
     }
 
     &:active {
       transform: scale(0.98);
+    }
     }
   }

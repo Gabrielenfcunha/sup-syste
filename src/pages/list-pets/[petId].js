@@ -126,11 +126,12 @@ export default function BlogPostPage(props) {
             </div>
           ))}
         </div>
-
-      </div>
-       <div>
-            <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
+      <div className={css["btn-back"]}>
+            <Link href ='/Homepage'className={css["btn"]}
+  >Voltar</Link>
      </div>
+      </div>
+
       <div className={css["borda"]}>
         {
           isClient &&
