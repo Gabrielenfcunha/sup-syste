@@ -92,7 +92,6 @@ function calcularIdade(dataNascimento) {
             <Link href='/ListMedicacao'>Medicação</Link>
             <Link href='/ListExames'>Exames</Link>
             <Link href='/ListConsulta'>Consulta</Link>
-            <Link href='/ListConsulta'>Compartilhar</Link>
             <div className={css.logout}>
              <img src="/img/sair.png"  onClick={handleLogout} alt="button" />
             </div>

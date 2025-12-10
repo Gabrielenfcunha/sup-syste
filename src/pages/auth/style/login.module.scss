@@ -101,4 +101,36 @@
     text-align: center;
     align-items: center;
   }
+
+  .imageBox {
+    
+    width: 100rem;
+    max-width: 370px;   // ajuste como quiser
+    margin: 2rem 0;
+
+    img {
+      width: 100%;
+      border-radius: 1px;
+      display: block;
+      
+      
+    }
+
+    .imageText {
+      position: absolute;
+      top: 50%;           // centraliza vertical
+      left: 50%;          // centraliza horizontal
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      width: 90%;
+   @media (max-width: 850px) {
+    text-align: center;
+    align-items: center;
+  }
+    }
+  }
 }

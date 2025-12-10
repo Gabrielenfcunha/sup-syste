@@ -32,6 +32,7 @@ export default function  ListPets () {
   return (
     <div className={css["list-vacina"]}>
       <Loader active={!values.length} />
+      <h2>pets</h2>  
       <table>
         <thead>
           <tr>

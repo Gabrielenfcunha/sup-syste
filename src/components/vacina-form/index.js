@@ -28,7 +28,7 @@ export default function VacinaForm(props) {
   return( 
     <div className={css["vacina-form"]}>
       <h2 className={css["title"]}>
-        vermifugo
+        vacina
       </h2>
       <Loader active={!userPets.length} />
       <div  className={css["form-group"]}>
@@ -67,13 +67,6 @@ export default function VacinaForm(props) {
               name='veterinario'
               value={values?.['veterinario']}
               onChange={onChange}
-            />
-            <input
-            placeholder='veterinario'
-              name='veterinario'
-              value={values?.['veterinario']}
-              onChange={onChange}
-
             />
             <input
             placeholder='dose'

@@ -34,6 +34,8 @@ export default function  ListVermifugo() {
   return (
     <div className={css["list-vacina"]}>
       <Loader active={!values.length} />
+ <h2>vermifugo</h2>  
+
       <table>
         <thead>
           <tr>

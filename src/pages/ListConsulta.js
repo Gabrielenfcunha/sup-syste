@@ -33,17 +33,18 @@ export default function  Listconsulta() {
 
   return (
     <div className={css["list-vacina"]}>
-     <Loader active={!values.length} />      
+     <Loader active={!values.length} />  
+     <h2>consulta</h2>    
      <table>
         <thead>
           <tr>
             <th>Nome do pet</th>
-            <th>consulta</th>
+            <th>Clinica</th>
             <th>data consulta</th>
             <th>horaio</th>
             <th>veterinario</th>
             <th>local</th>
-            <th>detalhes</th>
+            <th>motivi da consulta</th>
             <th>edit</th>
             <th>delete</th>
           </tr>

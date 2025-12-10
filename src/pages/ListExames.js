@@ -34,15 +34,16 @@ export default function  Listexames() {
   return (
     <div className={css["list-vacina"]}>
       <Loader active={!values.length} />
+           <h2>Exames</h2>    
       <table>
         <thead>
           <tr>
             <th>Nome do pet</th>
-            <th>Exames</th>
-            <th>data_Exames</th>
-            <th>detalhe</th>
-            <th>edit</th>
-            <th>delete</th>
+            <th>Exame</th>
+            <th>Data Exame</th>
+            <th>Detalhe</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>

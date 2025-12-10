@@ -34,6 +34,8 @@ export default function  Listvacina() {
   return (
     <div className={css["list-vacina"]}>
       <Loader active={!values.length} />
+     <h2>Vacina</h2>  
+
       <table>
         <thead>
           <tr>
@@ -56,9 +58,10 @@ export default function  Listvacina() {
               <th>{value.vacina}</th>
               <th>{value.marca}</th>
               <th>{value.veterinario}</th>
+              <th>{value.dose}</th>
               <th>{value.fabricacao}</th>
               <th>{value.vencimento}</th>
-              <th>{value.dose}</th>
+              
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {

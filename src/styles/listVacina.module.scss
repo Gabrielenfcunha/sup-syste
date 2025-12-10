@@ -7,7 +7,7 @@
   overflow: auto;
 
   h2 {
-    color: #333;
+    color: #ffffff;
     font-size: 1.8rem;
     margin-bottom: 2rem;
   }
@@ -20,19 +20,19 @@
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(167, 65, 65, 0.1);
 
     th, td {
       padding: 1rem;
       border-bottom: 1px solid #ddd;
       text-align: center;
       font-size: 0.95rem;
-      color: #333;
+      color: #372d2d;
     }
 
     thead {
-      background: #b7b9ba;
-      color: white;
+    background: linear-gradient(.1deg,#976ced,#90c2e5,);      
+    color: white;
 
       th {
         font-weight: 600;

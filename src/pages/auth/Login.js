@@ -44,33 +44,46 @@ export default function  Login ({setToken}) {
   };
 
   return (
-    <div className={css["loginContainer"]}>
+   <div className={css["loginContainer"]}>
       <div className={css["formSection"]}>
         <h1>Entrar</h1>
+
         <form onSubmit={handleSubmit} className={css["form"]}>
           <input
-            placeholder='Email'
-            name='email'
-            onChange={handleChange} autoComplete='username'
+            placeholder="Email"
+            name="email"
+            type="email"
+            value={formData.email}
+            onChange={handleChange}
+            autoComplete="username"
+            required
           />
-          <input 
-            placeholder='Password'
-            name='password'
+
+          <input
+            placeholder="Password"
+            name="password"
             type="password"
-            onChange={handleChange} autoComplete='current-password'
+            value={formData.password}
+            onChange={handleChange}
+            autoComplete="current-password"
+            required
           />
-        
+
           <button type="submit">
             Enviar
           </button>
         </form>
       </div>
+
       <div className={css["sideSection"]}>
         <h2>Olá, amigo</h2>
-        <p>Seu pet merece esse cuidado VIP! 
-          Cadastre-se no SUP e deixe a saúde dele em boas patas!</p>
-        <Link href='/auth/SignUp' className={css["signupBtn"]}>Inscreva - se</Link>
-        
+        <p>
+          Seu pet merece esse cuidado VIP! <br />
+          Cadastre-se no SUP e deixe a saúde dele em boas patas!
+        </p>
+        <Link href="/auth/SignUp" className={css["signupBtn"]}>
+          Inscreva-se
+        </Link>
       </div>
     </div>
   )

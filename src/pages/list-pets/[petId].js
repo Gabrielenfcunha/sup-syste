@@ -91,7 +91,7 @@ export default function BlogPostPage(props) {
             <div key={c.id}>
               <p><strong>Consulta:</strong> {c.consulta}</p>
               <p><strong>Data:</strong> {c.data_consulta}</p>
-              <p><strong>Horário:</strong> {c.horario}</p>
+              <p><strong>Horário:</strong> {c.horaio}</p>
               <p><strong>Veterinário:</strong> {c.veterinario}</p>
               <p><strong>Local:</strong> {c.local}</p>
               <p><strong>Detalhes:</strong> {c.detalhes}</p>
