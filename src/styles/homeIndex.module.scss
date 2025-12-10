@@ -8,7 +8,7 @@
   .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #558;
+    color: #8c52ff;
   }
 
   .menu {
@@ -17,23 +17,23 @@
 
       a {
         text-decoration: none;
-        color: #558;
+        color: #8c52ff;
         font-weight: 500;
         transition: 0.2s ease;
 
         &:hover {
-          color:rgb(58, 58, 226);
+          color:#90c2e5;
         }
       }
 
       .signup {
-        background:#558;
+        background: #8c52ff;
         color: white;
         padding: 0.6rem 1.2rem;
         border-radius: 6px;
 
         &:hover {
-          background: darken(#558, 10%);
+          background: darken(#90c2e5, 10%);
         }
       }
     }
@@ -55,24 +55,24 @@
       margin-bottom: 1rem;
 
       span {
-        color: #558;
+        color: #8c52ff;
       }
     }
 
     h2 {
-      color: #558;
+      color: #8c52ff;
       font-size: 1.9rem;
       margin-bottom: 1rem;
     }
 
     p {
-      color: #558;
+      color: #8c52ff;
       font-size: 1rem;
       margin-bottom: 2rem;
     }
 
     .btn {
-      background: #558;
+      background: #8c52ff;
       color: white;
       text-decoration: none;
       padding: 0.8rem 2rem;
@@ -81,7 +81,7 @@
       transition: 0.3s ease;
 
       &:hover {
-        background: darken(#558, 8%);
+        background: darken( #8c52ff, 8%);
       }
     }
   }
@@ -128,6 +128,123 @@
       img {
         width: 70%;
       }
+    }
+  }
+  
+}
+
+.vacina-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  border-left: 6px solid #90c2e5;
+
+  h2 {
+    text-align: center;
+    color: #8c52ff;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .dose, .reforco {
+    background: #f7faff;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid #8c52ff;
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 0;
+      color: #333;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 4px 0;
+      color: #555;
+      font-size: .9rem;
+    }
+
+    span {
+      display: block;
+      margin-top: 6px;
+      font-weight: 600;
+      font-size: .95rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+  .vacina-card {
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .dose,
+    .reforco {
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+
+      h3 {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+      }
+
+      span {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+}
+
+.info-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+  border-right: 6px solid  #8c52ff;
+
+  h2 {
+    text-align: center;
+    color: #8c52ff;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+
+  .info-item {
+    background: #f7faff;
+    padding: 12px 14px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border-left: 4px solid #90c2e5;
+
+    h3 {
+      margin: 0;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    p {
+      margin: 4px 0 0;
+      color: #555;
+      font-size: .92rem;
     }
   }
 }
