@@ -1,27 +1,37 @@
 .loginContainer {
+  background: #ffffff url('/img/cats.jpg') no-repeat right bottom;
+  background-size: 82rem; // tamanho da imagem
   border-radius: 8px;
   display: flex;
   min-height: 100vh;
-  background-color: #ffffff;
   font-family: #000;
 
   @media (max-width: 850px) {
     flex-direction: column;
+      background: #ffffff url('/img/cats.jpg') no-repeat right bottom;
+      background-size:40rem; // tamanho da imagem
   }
 }
 // 🔹 Seção do formulário
 .formSection {
+  background: linear-gradient(1deg, #8c52ff,  #5ce1e6);
   flex: 1;
+  color:  #8c52ff;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 4rem;
+      // text-align: center;
+  text-align: center;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
   
 
   h1 {
     font-size: 2.5rem;
-    color: #222;
+    color: #ffffff;
     margin-bottom: 2rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
   }
 
   .form {
@@ -38,13 +48,13 @@
 
       &:focus {
         outline: none;
-        border-color: #00c853;
+        border-color: #5ce1e6;
       }
     }
 
     button {
-      background-color:#7184ee;
-      color: rgb(255, 255, 255);
+      background-color:#5ce1e6;
+      color: white;
       border: none;
       border-radius: 8px;
       padding: 0.9rem;
@@ -53,9 +63,10 @@
       cursor: pointer;
       transition: background 0.3s;
 
-      // &:hover {
-      //   background-color: darken(#00d9ff, 10%);
-      // }
+      &:hover {
+        background-color: darken(#5ce1e6, 10%);
+      }
+
     }
   }
 }
@@ -63,8 +74,8 @@
 // 🔹 Seção lateral
 .sideSection {
   flex: 1;
-  background: linear-gradient(145deg, #8c52ff,  #5ce1e6);
-  color: white;
+  color:  #8c52ff;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -74,63 +85,53 @@
   border-bottom-left-radius: 80px;
 
   h2 {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
   }
 
   p {
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     line-height: 1.5;
     margin-bottom: 2rem;
   }
 
   .signupBtn {
-    background: white;
-    color:  #009688;
-    padding: 0.9rem 1.8rem;
+   background-color:#7184ee;
+    color:  #ffffff;
+    padding: 0.9rem 0.8rem;
     border-radius: 8px;
     text-decoration: none;
     font-weight: 600;
     width: fit-content;
     transition: all 0.3s ease;
 
+    &:hover {
+      background: darken(white, 5%);
+      color: darken(#120267, 10%);
+    }
+
 
   }
 
   @media (max-width: 850px) {
-    text-align: center;
+    // text-align: center;
     align-items: center;
+    padding: 3rem 0.2rem;
+    h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    padding-right: 50px;
+    margin-top: 4rem;
   }
 
-  .imageBox {
-    
-    width: 100rem;
-    max-width: 370px;   // ajuste como quiser
-    margin: 2rem 0;
-
-    img {
-      width: 100%;
-      border-radius: 1px;
-      display: block;
-      
-      
-    }
-
-    .imageText {
-      position: absolute;
-      top: 50%;           // centraliza vertical
-      left: 50%;          // centraliza horizontal
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 1.3rem;
-      font-weight: 700;
-      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      width: 90%;
-   @media (max-width: 850px) {
-    text-align: center;
-    align-items: center;
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    padding-right: 100px;
+    padding-left: 20px;
+    margin: 3px;
   }
-    }
   }
+
 }

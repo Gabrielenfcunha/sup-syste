@@ -77,9 +77,10 @@ export default function  Login ({setToken}) {
 
       <div className={css["sideSection"]}>
         <h2>Olá, amigo</h2>
-        <p>
+        <p><strong>
           Seu pet merece esse cuidado VIP! <br />
-          Cadastre-se no SUP e deixe a saúde dele em boas patas!
+          Cadastre-se no SUP <br /> e deixe a saúde dele em boas patas!
+          </strong>
         </p>
         <Link href="/auth/SignUp" className={css["signupBtn"]}>
           Inscreva-se

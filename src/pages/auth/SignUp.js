@@ -73,7 +73,7 @@ export default function SignUP  () {
       </div>
       <div className={css["sideSection"]}>
         <h2>Bem-vindo ao Sup</h2>
-        <p>Acesse sua conta para gerenciar os cuidados</p>
+        <p><strong>Acesse sua conta para gerenciar os cuidados </strong></p>
         <Link href = '/auth/Login' className={css["signupBtn"]}>Login</Link>
       </div>
     </div>
