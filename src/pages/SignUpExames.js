@@ -49,7 +49,7 @@ export default function  SignUpexames() {
 
   return (
     <div className={css["signup-container"]}>
-      <h1 className={css["title"]}>Medicamento do pet</h1>
+      <h1 className={css["title"]}>Exames do pet</h1>
       <form onSubmit={handleSubmit} className={css["form"]}>
          <ExamesForm
            values={values}

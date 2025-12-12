@@ -49,7 +49,7 @@ export default function  SignUpConsulta() {
 
   return (
     <div className={css["signup-container"]}>
-      <h1 className={css["title"]}>Medicamento do pet</h1>
+      <h1 className={css["title"]}>consulta do pet</h1>
       <form onSubmit={handleSubmit} className={css["form"]}>
          <ConsultaForm
            values={values}

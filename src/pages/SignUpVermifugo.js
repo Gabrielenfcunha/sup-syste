@@ -49,7 +49,7 @@ export default function  SignUpVermifugo() {
 
   return (
     <div className={css["signup-container"]}>
-      <h1 className={css["title"]}>vacina</h1>
+      <h1 className={css["title"]}>vermifugo</h1>
       <form onSubmit={handleSubmit} className={css["form"]}>
          <VermifugoForm
            values={values}
