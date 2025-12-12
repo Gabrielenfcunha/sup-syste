@@ -20,10 +20,9 @@ export default function  Listconsulta() {
     );
 
     if (error) {
-      alert('erro');
+      alert('erro')
     } else {
-      // remove registros sem pet para evitar erros
-      setValues(data.filter(v => v.pet));
+      setValues(data);
     }
   }
 
@@ -53,14 +52,14 @@ export default function  Listconsulta() {
         <tbody>
           {values.length > 0 ? (
             values.map((value) => (
-              <tr key={value.id}>
-                <td>{value.pet?.name || "—"}</td>
-                <th>{value.consulta}</th>
-                <th>{value.data_consulta}</th>
-                <th>{value.horaio}</th>
-                <th>{value.veterinario}</th>
-                <th>{value.local}</th>
-                <th>{value.detalhes}</th>
+            <tr>
+              <th>{value.pet.name}</th>
+              <th>{value.consulta}</th>
+              <th>{value.data_consulta}</th>
+              <th>{value.horaio}</th>
+              <th>{value.veterinario}</th>
+              <th>{value.local}</th>
+              <th>{value.detalhes}</th>
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {
