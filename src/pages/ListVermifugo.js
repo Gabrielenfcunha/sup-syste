@@ -1,99 +1,97 @@
-
 import { useRouter } from 'next/navigation';
-import React, { useState  } from 'react';
-import { supabaseClient as supabase } from "@/util/supabase";
+import React from 'react';
 import { postJson } from '@/util/http';
 import { Loader } from '@/components/loader';
 import Link from "next/link";
-import css from "../styles/listVacina.module.scss"
+import css from "../styles/listVacina.module.scss";
 
-
-export default function  ListVermifugo() {
+export default function ListVermifugo() {
 
   const router = useRouter();
   const [values, setValues] = React.useState([]);
 
   async function fetchvermifugo() {
-    const {data, error} = await postJson(
-      '/api/vermifugo/list',
-      {}
-    );
+    const { data, error } = await postJson('/api/vermifugo/list', {});
 
     if (error) {
-      alert('erro')
+      alert('erro');
     } else {
-      setValues(data);
+      // Remove itens sem pet para evitar erros
+      setValues(data.filter(v => v.pet));
     }
   }
 
-    
-  React.useEffect(_ => {
+  React.useEffect(() => {
     fetchvermifugo();
   }, []);
 
   return (
     <div className={css["list-vacina"]}>
       <Loader active={!values.length} />
- <h2>vermifugo</h2>  
+
+      <h2>Vermífugo</h2>
 
       <table>
         <thead>
           <tr>
             <th>Nome do pet</th>
-            <th>vermifugo</th>
-            <th>tipo vermifugo</th>
-            <th>data vermifugo</th>
-            <th>edit</th>
-            <th>delete</th>
+            <th>Vermífugo</th>
+            <th>Tipo vermífugo</th>
+            <th>Data</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
+
         <tbody>
           {values.length > 0 ? (
             values.map((value) => (
-            <tr>
-              <th>{value.pet?.name}</th>
-              <th>{value.vermifugo}</th>
-              <th>{value.tipo_vermifugo}</th>
-              <th>{value.data_vermifugo}</th>
+              <tr key={value.id}>
+                <td>{value.pet?.name || "—"}</td>
+                <td>{value.vermifugo}</td>
+                <td>{value.tipo_vermifugo}</td>
+                <td>{value.data_vermifugo}</td>
 
-              <th>
-                <button className={css["btn-edit"]}
-                  onClick={_ => {
-                    router.push(`/edit-vermifugo/${value.id}`);
-                  }}
-                >Edit</button>
-              </th>
-                <th>
-                <button className={css["btn-delete"]}
-                  onClick={async _ => {
-                    if (!window.confirm('tem certeza?')) {return;}
-                    const {data, error} = await postJson(
+                <td>
+                  <button
+                    className={css["btn-edit"]}
+                    onClick={() => router.push(`/edit-vermifugo/${value.id}`)}
+                  >
+                    Edit
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    className={css["btn-delete"]}
+                    onClick={async () => {
+                      if (!window.confirm('tem certeza?')) return;
+
+                      const { error } = await postJson(
                         '/api/vermifugo/delete',
-                        {id:value.id}
-                      );             
-                      
-                      if (error) {
-                        //
-                      } else {
-                        fetchvermifugo();
-                      }
-                  }}
-                >Deletar</button>
-              </th>
-            </tr>         
+                        { id: value.id }
+                      );
+
+                      if (!error) fetchvermifugo();
+                    }}
+                  >
+                    Deletar
+                  </button>
+                </td>
+              </tr>
             ))
           ) : (
-              <tr>   
-              <th className={css['empty']}>Nenhuma consulta cadastrado ainda 🐶</th>
-               </tr> 
-                )
-          }
+            <tr>
+              <td colSpan="6" className={css['empty']}>
+                Nenhum vermífugo cadastrado ainda 🐶
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
-      <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
-      
-      <Link href='/SignUpVermifugo' className={css["btn-back"]}>+</Link>
 
+      <Link href='/Homepage' className={css["btn-back"]}>Voltar</Link>
+      <Link href='/SignUpVermifugo' className={css["btn-back"]}>+</Link>
     </div>
-  )
-};
+  );
+}

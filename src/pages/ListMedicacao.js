@@ -1,102 +1,105 @@
-
 import { useRouter } from 'next/navigation';
-import React, { useState  } from 'react';
-import { supabaseClient as supabase } from "@/util/supabase";
+import React from 'react';
 import { postJson } from '@/util/http';
 import { Loader } from '@/components/loader';
 import Link from "next/link";
-import css from "../styles/listVacina.module.scss"
+import css from "../styles/listVacina.module.scss";
 
-
-export default function  ListMedicacao() {
+export default function ListMedicacao() {
 
   const router = useRouter();
   const [values, setValues] = React.useState([]);
 
   async function fetchmedicacao() {
-    const {data, error} = await postJson(
-      '/api/medicacao/list',
-      {}
-    );
+    const { data, error } = await postJson('/api/medicacao/list', {});
 
     if (error) {
-      alert('erro')
+      alert('erro');
     } else {
-      setValues(data);
+      // remove medicamentos sem pet associado
+      setValues(data.filter(v => v.pet));
     }
   }
 
-    
-  React.useEffect(_ => {
+  React.useEffect(() => {
     fetchmedicacao();
   }, []);
 
   return (
     <div className={css["list-vacina"]}>
       <Loader active={!values.length} />
-           <h2>Medicaçao</h2>  
+
+      <h2>Medicação</h2>
+
       <table>
         <thead>
           <tr>
             <th>Nome do pet</th>
-            <th>medicaçao</th>
+            <th>Medicação</th>
             <th>Quantidade</th>
-            <th>apresencao</th>
-            <th>via_admi</th>
-            <th>especial</th>
-            <th>tipo_med</th>
-            <th>edit</th>
-            <th>delete</th>
+            <th>Apresentação</th>
+            <th>Via Adm.</th>
+            <th>Especial</th>
+            <th>Tipo</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
+
         <tbody>
           {values.length > 0 ? (
-    values.map((value) => (
-       <tr>
-              <th>{value.pet.name}</th>
-              <th>{value.medicamento}</th>
-              <th>{value.quantidade}</th>
-              <th>{value.apresencao}</th>
-              <th>{value.via_admi}</th>
-              <th>{value.especial}</th>
-              <th>{value.tipo_med}</th>
-              <th>
-                <button className={css["btn-edit"]}
-                  onClick={_ => {
-                    router.push(`/edit-medicacao/${value.id}`);
-                  }}
-                >Edit</button>
-              </th>
-                <th>
-                <button className={css["btn-delete"]}
-                  onClick={async _ => {
-                    if (!window.confirm('tem certeza?')) {return;}
-                    const {data, error} = await postJson(
+            values.map((value) => (
+              <tr key={value.id}>
+                <td>{value.pet?.name || "—"}</td>
+                <td>{value.medicamento}</td>
+                <td>{value.quantidade}</td>
+                <td>{value.apresencao}</td>
+                <td>{value.via_admi}</td>
+                <td>{value.especial}</td>
+                <td>{value.tipo_med}</td>
+
+                <td>
+                  <button
+                    className={css["btn-edit"]}
+                    onClick={() => router.push(`/edit-medicacao/${value.id}`)}
+                  >
+                    Edit
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    className={css["btn-delete"]}
+                    onClick={async () => {
+                      if (!window.confirm('Tem certeza?')) return;
+
+                      const { error } = await postJson(
                         '/api/medicacao/delete',
-                        {id:value.id}
-                      );             
-                      
-                      if (error) {
-                        //
-                      } else {
+                        { id: value.id }
+                      );
+
+                      if (!error) {
                         fetchmedicacao();
                       }
-                  }}
-                >Deletar</button>
-              </th>
-            </tr>     
-
+                    }}
+                  >
+                    Deletar
+                  </button>
+                </td>
+              </tr>
             ))
           ) : (
-           <tr>   
-              <th className={css.empty}>Nenhuma consulta cadastrado ainda 🐶</th>
-            </tr> 
-          )}           
+            <tr>
+              <td className={css.empty} colSpan="9">
+                Nenhuma medicação cadastrada ainda 🐶
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
-      <Link href ='/Homepage' className={css["btn-back"]}>Voltar</Link>
-      <Link href='/SignUpMedicacao' className={css["btn-back"]}>+</Link>
 
+      <Link href='/Homepage' className={css["btn-back"]}>Voltar</Link>
+      <Link href='/SignUpMedicacao' className={css["btn-back"]}>+</Link>
     </div>
-  )
-};
+  );
+}
