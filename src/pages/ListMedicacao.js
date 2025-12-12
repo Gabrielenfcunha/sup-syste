@@ -20,9 +20,10 @@ export default function  ListMedicacao() {
     );
 
     if (error) {
-      alert('erro')
+      alert('erro');
     } else {
-      setValues(data);
+      // remove registros sem pet para evitar erros
+      setValues(data.filter(v => v.pet));
     }
   }
 
@@ -51,15 +52,15 @@ export default function  ListMedicacao() {
         </thead>
         <tbody>
           {values.length > 0 ? (
-    values.map((value) => (
-       <tr>
-              <th>{value.pet.name}</th>
-              <th>{value.medicamento}</th>
-              <th>{value.quantidade}</th>
-              <th>{value.apresencao}</th>
-              <th>{value.via_admi}</th>
-              <th>{value.especial}</th>
-              <th>{value.tipo_med}</th>
+            values.map((value) => (
+              <tr key={value.id}>
+                <td>{value.pet?.name || "—"}</td>
+                <th>{value.medicamento}</th>
+                <th>{value.quantidade}</th>
+                <th>{value.apresencao}</th>
+                <th>{value.via_admi}</th>
+                <th>{value.especial}</th>
+                <th>{value.tipo_med}</th>
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {

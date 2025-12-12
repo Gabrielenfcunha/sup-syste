@@ -20,9 +20,10 @@ export default function  ListVermifugo() {
     );
 
     if (error) {
-      alert('erro')
+      alert('erro');
     } else {
-      setValues(data);
+      // remove registros sem pet para evitar erros
+      setValues(data.filter(v => v.pet));
     }
   }
 
@@ -50,11 +51,11 @@ export default function  ListVermifugo() {
         <tbody>
           {values.length > 0 ? (
             values.map((value) => (
-            <tr>
-              <th>{value.pet?.name}</th>
-              <th>{value.vermifugo}</th>
-              <th>{value.tipo_vermifugo}</th>
-              <th>{value.data_vermifugo}</th>
+              <tr key={value.id}>
+                <td>{value.pet?.name || "—"}</td>
+                <th>{value.vermifugo}</th>
+                <th>{value.tipo_vermifugo}</th>
+                <th>{value.data_vermifugo}</th>
 
               <th>
                 <button className={css["btn-edit"]}
