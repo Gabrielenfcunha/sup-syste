@@ -20,9 +20,10 @@ export default function  Listexames() {
     );
 
     if (error) {
-      alert('erro')
+      alert('erro');
     } else {
-      setValues(data);
+      // remove registros sem pet para evitar erros
+      setValues(data.filter(v => v.pet));
     }
   }
 
@@ -49,11 +50,11 @@ export default function  Listexames() {
         <tbody>
           {values.length > 0 ? (
             values.map((value) => (
-            <tr>
-              <th>{value.pet.name}</th>
-              <th>{value.exames}</th>
-              <th>{value.data_exames}</th>
-              <th>{value.detalhe}</th>
+              <tr key={value.id}>
+                <td>{value.pet?.name || "—"}</td>
+                <th>{value.exames}</th>
+                <th>{value.data_exames}</th>
+                <th>{value.detalhe}</th>
               <th>
                 <button className={css["btn-edit"]}
                   onClick={_ => {

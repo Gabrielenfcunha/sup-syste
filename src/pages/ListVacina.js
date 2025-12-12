@@ -20,9 +20,10 @@ export default function  Listvacina() {
     );
 
     if (error) {
-      alert('erro')
+      alert('erro');
     } else {
-      setValues(data);
+      // remove registros sem pet para evitar erros
+      setValues(data.filter(v => v.pet));
     }
   }
 
@@ -53,14 +54,14 @@ export default function  Listvacina() {
         <tbody>
           {values.length > 0 ? (
             values.map((value) => (
-            <tr>
-              <th>{value.pet.name}</th>
-              <th>{value.vacina}</th>
-              <th>{value.marca}</th>
-              <th>{value.veterinario}</th>
-              <th>{value.dose}</th>
-              <th>{value.fabricacao}</th>
-              <th>{value.vencimento}</th>
+              <tr key={value.id}>
+                <td>{value.pet?.name || "—"}</td>
+                <th>{value.vacina}</th>
+                <th>{value.marca}</th>
+                <th>{value.veterinario}</th>
+                <th>{value.dose}</th>
+                <th>{value.fabricacao}</th>
+                <th>{value.vencimento}</th>
               
               <th>
                 <button className={css["btn-edit"]}
